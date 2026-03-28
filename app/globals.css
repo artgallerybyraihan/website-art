@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #FAFAF8;
+  --color-foreground: #1A1A1A;
+  --color-cream: #F5F0EB;
+  --color-beige: #E8E0D6;
+  --color-warm-gray: #9C9588;
+  --color-charcoal: #2D2D2D;
+  --color-gold: #B8976A;
+  --color-gold-light: #D4BC94;
+  --color-off-white: #FDFCFA;
+  --font-sans: var(--font-montserrat);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-warm-gray);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-charcoal);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-gold-light);
+  color: var(--color-charcoal);
+}
+
+/* Artwork image zoom on hover */
+.artwork-image-container {
+  overflow: hidden;
+}
+.artwork-image-container img {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.artwork-image-container:hover img {
+  transform: scale(1.05);
+}
+
+/* Modal zoom */
+.modal-zoom-container {
+  cursor: zoom-in;
+  overflow: hidden;
+  touch-action: pan-x pan-y pinch-zoom;
+}
+.modal-zoom-container.zoomed {
+  cursor: zoom-out;
+}
+
+/* Page transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Subtle line decoration */
+.line-accent::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: var(--color-gold);
+  margin-top: 1.5rem;
+}
+
+.line-accent-center::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: var(--color-gold);
+  margin: 1.5rem auto 0;
+}
+
+/* Animated underline for nav links */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-foreground);
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* WhatsApp button pulse */
+@keyframes gentle-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(184, 151, 106, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(184, 151, 106, 0); }
+}
+.whatsapp-pulse {
+  animation: gentle-pulse 2.5s ease-in-out infinite;
+}
