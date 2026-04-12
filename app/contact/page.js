@@ -1,8 +1,8 @@
 import AnimatedSection from "@/components/AnimatedSection";
-import { getWhatsAppLinkGeneral } from "@/lib/data";
+import { getWhatsAppLinkGeneral } from "@/lib/whatsapp";
 
 export const metadata = {
-  title: "Contact — Artgallery by Raihan",
+  title: "Contact Artgallery by Raihan",
   description:
     "Get in touch with Artgallery by Raihan via WhatsApp or Instagram. Enquire about original contemporary calligraphy and landscape paintings.",
 };
@@ -14,7 +14,7 @@ export default function ContactPage() {
       <section className="pt-32 pb-16 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <AnimatedSection>
-            <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold">
+            <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-maroon">
               Contact
             </span>
             <h1 className="mt-3 text-4xl sm:text-5xl font-bold text-foreground tracking-tight">
@@ -22,9 +22,9 @@ export default function ContactPage() {
             </h1>
             <p className="mt-4 text-sm text-warm-gray max-w-md mx-auto leading-relaxed">
               We&apos;d love to hear from you. Whether you&apos;re drawn to a
-              specific piece or simply curious — reach out.
+              specific piece or simply curious reach out.
             </p>
-            <div className="w-12 h-[1px] bg-gold mx-auto mt-6" />
+            <div className="w-12 h-[1px] bg-maroon mx-auto mt-6" />
           </AnimatedSection>
         </div>
       </section>
@@ -38,13 +38,13 @@ export default function ContactPage() {
               href={getWhatsAppLinkGeneral()}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block p-8 sm:p-10 bg-white border border-beige/50 rounded-sm hover:border-gold/30 hover:shadow-lg hover:shadow-gold/5 transition-all duration-500"
+              className="group block p-8 sm:p-10 bg-white border border-beige/50 rounded-sm hover:border-maroon/30 hover:shadow-lg hover:shadow-maroon/5 transition-all duration-500"
               id="contact-whatsapp"
             >
               <div className="flex items-start gap-6">
-                <div className="shrink-0 w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
+                <div className="shrink-0 w-12 h-12 rounded-full bg-maroon/10 flex items-center justify-center group-hover:bg-maroon/20 transition-colors">
                   <svg
-                    className="w-5 h-5 text-gold"
+                    className="w-5 h-5 text-maroon"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -52,7 +52,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <h2 className="text-lg font-semibold text-foreground group-hover:text-gold transition-colors">
+                  <h2 className="text-lg font-semibold text-foreground group-hover:text-maroon transition-colors">
                     WhatsApp
                   </h2>
                   <p className="text-sm text-warm-gray mt-1 leading-relaxed">
@@ -60,7 +60,7 @@ export default function ContactPage() {
                     respond promptly with details about pricing, availability,
                     and shipping.
                   </p>
-                  <span className="inline-flex items-center gap-1.5 mt-4 text-xs font-medium tracking-[0.15em] uppercase text-gold group-hover:gap-2.5 transition-all">
+                  <span className="inline-flex items-center gap-1.5 mt-4 text-xs font-medium tracking-[0.15em] uppercase text-maroon group-hover:gap-2.5 transition-all">
                     Send Message
                     <svg
                       className="w-3.5 h-3.5"
@@ -87,13 +87,13 @@ export default function ContactPage() {
               href="https://instagram.com/artgallery.raihan"
               target="_blank"
               rel="noopener noreferrer"
-              className="group block p-8 sm:p-10 bg-white border border-beige/50 rounded-sm hover:border-gold/30 hover:shadow-lg hover:shadow-gold/5 transition-all duration-500"
+              className="group block p-8 sm:p-10 bg-white border border-beige/50 rounded-sm hover:border-maroon/30 hover:shadow-lg hover:shadow-maroon/5 transition-all duration-500"
               id="contact-instagram"
             >
               <div className="flex items-start gap-6">
-                <div className="shrink-0 w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
+                <div className="shrink-0 w-12 h-12 rounded-full bg-maroon/10 flex items-center justify-center group-hover:bg-maroon/20 transition-colors">
                   <svg
-                    className="w-5 h-5 text-gold"
+                    className="w-5 h-5 text-maroon"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -101,7 +101,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <h2 className="text-lg font-semibold text-foreground group-hover:text-gold transition-colors">
+                  <h2 className="text-lg font-semibold text-foreground group-hover:text-maroon transition-colors">
                     Instagram
                   </h2>
                   <p className="text-sm text-warm-gray mt-1 leading-relaxed">
@@ -109,7 +109,7 @@ export default function ContactPage() {
                     behind-the-scenes moments, and the latest additions to the
                     collection.
                   </p>
-                  <span className="inline-flex items-center gap-1.5 mt-4 text-xs font-medium tracking-[0.15em] uppercase text-gold group-hover:gap-2.5 transition-all">
+                  <span className="inline-flex items-center gap-1.5 mt-4 text-xs font-medium tracking-[0.15em] uppercase text-maroon group-hover:gap-2.5 transition-all">
                     @artgallery.raihan
                     <svg
                       className="w-3.5 h-3.5"
@@ -133,9 +133,9 @@ export default function ContactPage() {
           {/* Brand Note */}
           <AnimatedSection delay={0.3}>
             <div className="text-center pt-8">
-              <div className="w-12 h-[1px] bg-gold mx-auto mb-6" />
+              <div className="w-12 h-[1px] bg-maroon mx-auto mb-6" />
               <p className="text-sm text-warm-gray/60 italic max-w-sm mx-auto">
-                &ldquo;Every piece is an original, handmade work of art —
+                &ldquo;Every piece is an original, handmade work of art 
                 created with intention, patience, and soul.&rdquo;
               </p>
             </div>

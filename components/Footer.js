@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getWhatsAppLinkGeneral } from "@/lib/data";
+import { getWhatsAppLinkGeneral } from "@/lib/whatsapp";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#1A1A1A] text-white/70">
       {/* Gold line accent */}
-      <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#B8976A] to-transparent" />
+      <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-maroon to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
@@ -17,13 +17,13 @@ export default function Footer() {
               <h3 className="text-sm font-semibold tracking-[0.2em] uppercase text-white">
                 Artgallery
               </h3>
-              <p className="text-[10px] tracking-[0.15em] uppercase text-[#B8976A] font-medium">
+              <p className="text-[10px] tracking-[0.15em] uppercase text-maroon font-medium">
                 by Raihan
               </p>
             </div>
             <p className="text-sm leading-relaxed text-white/50 max-w-xs">
-              A family art house presenting original contemporary calligraphy
-              and atmospheric landscape paintings. Handmade art from Indonesia.
+              A family art gallery presenting original abstract calligraphy
+              and landscape & nature paintings. Handmade art from Indonesia.
             </p>
           </div>
 
@@ -60,7 +60,7 @@ export default function Footer() {
                 href={getWhatsAppLinkGeneral()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-[#B8976A] transition-colors duration-300 w-fit"
+                className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-maroon-light transition-colors duration-300 w-fit"
                 id="footer-whatsapp"
               >
                 <svg
@@ -76,7 +76,7 @@ export default function Footer() {
                 href="https://instagram.com/artgallery.raihan"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-[#B8976A] transition-colors duration-300 w-fit"
+                className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-maroon-light transition-colors duration-300 w-fit"
                 id="footer-instagram"
               >
                 <svg

@@ -1,7 +1,7 @@
 export const metadata = {
-  title: "The Collection — Artgallery by Raihan",
+  title: "The Collection Artgallery by Raihan",
   description:
-    "Browse original contemporary calligraphy by Raihan and atmospheric landscape paintings by Condro P.S. Handmade art from Indonesia for collectors and interiors.",
+    "Browse original abstract calligraphy by Raihan Mohammad and landscape & nature paintings by Condro Puspitosari. Handmade art from Indonesia for collectors and premium interiors.",
 };
 
 export default function ProductsLayout({ children }) {

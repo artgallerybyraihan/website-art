@@ -11,13 +11,13 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "Artgallery by Raihan — Contemporary Calligraphy & Landscape Painting",
+  title: "Artgallery by Raihan Contemporary Calligraphy & Landscape Painting",
   description:
-    "A family art house presenting original contemporary calligraphy by Raihan and atmospheric landscape paintings by Condro P.S. Handmade art from Indonesia, crafted for collectors and interiors.",
+    "A family art gallery presenting original abstract calligraphy by Raihan Mohammad and landscape & nature paintings by Condro Puspitosari. Handmade art from Indonesia, crafted for collectors and premium interiors.",
   keywords:
     "calligraphy art, landscape painting, handmade art Indonesia, contemporary calligraphy, original artwork, fine art gallery, art collectors",
   openGraph: {
-    title: "Artgallery by Raihan — Contemporary Calligraphy & Landscape Painting",
+    title: "Artgallery by Raihan Contemporary Calligraphy & Landscape Painting",
     description:
       "A family art house presenting original contemporary calligraphy and atmospheric landscape paintings. Handmade art from Indonesia.",
     type: "website",

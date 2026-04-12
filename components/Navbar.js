@@ -9,6 +9,9 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const pathname = usePathname();
+  const isHome = pathname === "/";
+  // Use white text on homepage hero when not scrolled
+  const useLight = isHome && !isScrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,10 +57,10 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" className="group" id="nav-logo">
               <div className="flex flex-col">
-                <span className="text-sm font-semibold tracking-[0.2em] uppercase text-[#1A1A1A]">
+                <span className={`text-sm font-semibold tracking-[0.2em] uppercase transition-colors duration-500 ${useLight ? "text-white" : "text-[#1A1A1A]"}`}>
                   Artgallery
                 </span>
-                <span className="text-[10px] tracking-[0.15em] uppercase text-[#9C9588] font-medium">
+                <span className={`text-[10px] tracking-[0.15em] uppercase font-medium transition-colors duration-500 ${useLight ? "text-white/70" : "text-[#9C9588]"}`}>
                   by Raihan
                 </span>
               </div>
@@ -71,9 +74,13 @@ export default function Navbar() {
                   href={link.href}
                   id={`nav-${link.label.toLowerCase()}`}
                   className={`nav-link text-xs font-medium tracking-[0.15em] uppercase transition-colors duration-300 ${
-                    pathname === link.href
-                      ? "text-[#1A1A1A]"
-                      : "text-[#9C9588] hover:text-[#1A1A1A]"
+                    useLight
+                      ? pathname === link.href
+                        ? "text-white"
+                        : "text-white/70 hover:text-white"
+                      : pathname === link.href
+                        ? "text-[#1A1A1A]"
+                        : "text-[#9C9588] hover:text-[#1A1A1A]"
                   }`}
                 >
                   {link.label}
@@ -90,15 +97,15 @@ export default function Navbar() {
             >
               <motion.span
                 animate={isMobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-                className="block w-6 h-[1px] bg-[#1A1A1A] origin-center"
+                className={`block w-6 h-[1px] origin-center transition-colors duration-500 ${useLight ? "bg-white" : "bg-[#1A1A1A]"}`}
               />
               <motion.span
                 animate={isMobileOpen ? { opacity: 0 } : { opacity: 1 }}
-                className="block w-6 h-[1px] bg-[#1A1A1A]"
+                className={`block w-6 h-[1px] transition-colors duration-500 ${useLight ? "bg-white" : "bg-[#1A1A1A]"}`}
               />
               <motion.span
                 animate={isMobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-                className="block w-6 h-[1px] bg-[#1A1A1A] origin-center"
+                className={`block w-6 h-[1px] origin-center transition-colors duration-500 ${useLight ? "bg-white" : "bg-[#1A1A1A]"}`}
               />
             </button>
           </div>

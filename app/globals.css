@@ -10,6 +10,9 @@
   --color-gold: #B8976A;
   --color-gold-light: #D4BC94;
   --color-off-white: #FDFCFA;
+  --color-maroon: #6B1C2A;
+  --color-maroon-light: #8B2E3D;
+  --color-maroon-dark: #4A0F1C;
   --font-sans: var(--font-montserrat);
 }
 
@@ -43,8 +46,8 @@ body {
 
 /* Selection */
 ::selection {
-  background-color: var(--color-gold-light);
-  color: var(--color-charcoal);
+  background-color: var(--color-maroon);
+  color: #fff;
 }
 
 /* Artwork image zoom on hover */
@@ -85,7 +88,7 @@ body {
   display: block;
   width: 60px;
   height: 1px;
-  background: var(--color-gold);
+  background: var(--color-maroon);
   margin-top: 1.5rem;
 }
 
@@ -94,7 +97,7 @@ body {
   display: block;
   width: 60px;
   height: 1px;
-  background: var(--color-gold);
+  background: var(--color-maroon);
   margin: 1.5rem auto 0;
 }
 
@@ -118,9 +121,21 @@ body {
 
 /* WhatsApp button pulse */
 @keyframes gentle-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(184, 151, 106, 0.4); }
-  50% { box-shadow: 0 0 0 8px rgba(184, 151, 106, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(107, 28, 42, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(107, 28, 42, 0); }
 }
 .whatsapp-pulse {
   animation: gentle-pulse 2.5s ease-in-out infinite;
+}
+
+/* Hero lotus background */
+.hero-lotus-bg {
+  position: relative;
+}
+.hero-lotus-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
 }
