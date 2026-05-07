@@ -67,7 +67,7 @@ export default function HomeClient({ featuredArtworks }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.12, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.05]"
+            className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.05]"
           >
             Where Art
             <br />
@@ -79,7 +79,7 @@ export default function HomeClient({ featuredArtworks }) {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.26, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="mt-7 text-base sm:text-lg text-warm-gray max-w-xl mx-auto leading-relaxed"
+            className="mt-5 sm:mt-7 text-sm sm:text-base lg:text-lg text-warm-gray max-w-xl mx-auto leading-relaxed"
           >
             Original contemporary calligraphy & atmospheric landscape paintings —
             handmade in Indonesia, curated for the discerning collector.
@@ -90,7 +90,7 @@ export default function HomeClient({ featuredArtworks }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
           >
             <Link
               href="/products"
@@ -116,7 +116,7 @@ export default function HomeClient({ featuredArtworks }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.65, duration: 0.8 }}
-            className="mt-16 flex items-center justify-center gap-8 sm:gap-12"
+            className="mt-12 sm:mt-16 flex items-center justify-center gap-6 sm:gap-8 lg:gap-12"
           >
             {[
               { num: "100+", label: "Original Works" },

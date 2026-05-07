@@ -87,9 +87,9 @@ export default function ProductsClient({ artworks }) {
       </section>
 
       {/* ── Filters ── */}
-      <section className="px-6 pb-10 relative z-40 sticky top-20 bg-background/90 backdrop-blur-xl border-b border-warm-gray/8">
+      <section className="px-4 sm:px-6 pb-10 relative z-40 sticky top-20 bg-background/90 backdrop-blur-xl border-b border-warm-gray/8">
         <div className="max-w-7xl mx-auto py-4">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-5">
+          <div className="flex flex-col items-center gap-4 sm:gap-5 sm:flex-row sm:justify-between">
 
             {/* Category tabs */}
             <div className="flex items-center gap-1">
@@ -97,7 +97,7 @@ export default function ProductsClient({ artworks }) {
                 <button
                   key={cat.key}
                   onClick={() => setActiveCategory(cat.key)}
-                  className={`filter-tab relative px-5 py-2 text-[11px] font-medium tracking-[0.15em] uppercase transition-colors duration-300 rounded-sm ${
+                  className={`filter-tab relative px-4 sm:px-5 py-2 text-[10px] sm:text-[11px] font-medium tracking-[0.12em] sm:tracking-[0.15em] uppercase transition-colors duration-300 rounded-sm whitespace-nowrap ${
                     activeCategory === cat.key
                       ? "text-foreground"
                       : "text-warm-gray hover:text-foreground"

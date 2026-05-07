@@ -225,3 +225,28 @@ body {
 .modal-close-btn:hover {
   transform: rotate(90deg);
 }
+
+/* ──── Mobile-specific fixes ──── */
+@media (hover: none) and (pointer: coarse) {
+  /* Disable hover lift on touch devices — prevents sticky hover */
+  .card-hover-glow:hover {
+    box-shadow: none;
+    transform: none;
+  }
+  /* Disable image zoom on touch — prevents accidental zoom */
+  .artwork-image-container:hover img {
+    transform: none;
+  }
+}
+
+/* ──── Small screen overrides ──── */
+@media (max-width: 639px) {
+  /* Tighter footer padding */
+  footer .grid {
+    gap: 2rem;
+  }
+  /* More compact modal on small screens */
+  .modal-zoom-container img {
+    border-radius: 4px;
+  }
+}

@@ -140,7 +140,7 @@ export default function Navbar() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05, duration: 0.4 }}
-              className="absolute top-8 left-6"
+              className="absolute top-0 left-6 h-20 flex items-center"
             >
               <div className="flex flex-col leading-none">
                 <span className="text-sm font-bold tracking-[0.25em] uppercase text-[#1A1A1A]">Artgallery</span>

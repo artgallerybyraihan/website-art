@@ -179,7 +179,7 @@ export default function ArtworkModal({
           </div>
 
           {/* Main Content */}
-          <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-16 pt-16 pb-8 flex flex-col lg:flex-row items-center gap-8 lg:gap-16 max-h-screen overflow-y-auto lg:overflow-visible">
+          <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-16 pt-14 sm:pt-16 pb-6 sm:pb-8 flex flex-col lg:flex-row items-center gap-5 sm:gap-8 lg:gap-16 max-h-[100dvh] overflow-y-auto lg:overflow-visible overscroll-contain">
 
             {/* ── Image Panel ── */}
             <div
@@ -197,7 +197,7 @@ export default function ArtworkModal({
                   animate="center"
                   exit="exit"
                   transition={{ duration: 0.38, ease: [0.25, 0.46, 0.45, 0.94] }}
-                  className={`relative flex items-center justify-center max-h-[65vh] lg:max-h-[80vh] w-full modal-zoom-container ${zoomed ? "zoomed" : ""}`}
+                  className={`relative flex items-center justify-center max-h-[40vh] sm:max-h-[55vh] lg:max-h-[80vh] w-full modal-zoom-container ${zoomed ? "zoomed" : ""}`}
                   onClick={() => setZoomed(!zoomed)}
                 >
                   <img
@@ -300,7 +300,7 @@ export default function ArtworkModal({
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="lg:w-[320px] shrink-0 space-y-5 pb-8 lg:pb-0"
+                className="lg:w-[320px] shrink-0 space-y-4 sm:space-y-5 pb-6 lg:pb-0 w-full"
               >
                 {/* Status badge */}
                 <div className="flex items-center gap-2">
@@ -323,7 +323,7 @@ export default function ArtworkModal({
 
                 {/* Title & Artist */}
                 <div>
-                  <h2 className="text-2xl sm:text-3xl font-bold text-white leading-tight tracking-tight">
+                  <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white leading-tight tracking-tight">
                     {current.title}
                   </h2>
                   <p className="text-sm text-white/45 mt-2 font-medium tracking-wider">
@@ -370,7 +370,7 @@ export default function ArtworkModal({
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="whatsapp-pulse inline-flex items-center justify-center gap-2.5 w-full px-6 py-4 bg-maroon hover:bg-maroon-dark text-white text-xs font-semibold tracking-[0.18em] uppercase rounded-sm transition-colors duration-300 group"
+                  className="whatsapp-pulse inline-flex items-center justify-center gap-2.5 w-full px-6 py-3.5 sm:py-4 bg-maroon hover:bg-maroon-dark text-white text-[10px] sm:text-xs font-semibold tracking-[0.18em] uppercase rounded-sm transition-colors duration-300 group"
                   id="modal-whatsapp-cta"
                 >
                   <svg className="w-4 h-4 shrink-0 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
@@ -395,7 +395,7 @@ export default function ArtworkModal({
               <button
                 onClick={goPrev}
                 disabled={currentIndex === 0}
-                className={`absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-10 w-11 h-11 flex items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-white/40 hover:text-white hover:bg-white/12 hover:border-white/20 transition-all duration-300 ${
+                className={`absolute left-1 sm:left-5 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-white/40 hover:text-white hover:bg-white/12 hover:border-white/20 transition-all duration-300 hidden sm:flex ${
                   currentIndex === 0 ? "opacity-0 pointer-events-none" : ""
                 }`}
                 aria-label="Previous artwork"
@@ -409,7 +409,7 @@ export default function ArtworkModal({
               <button
                 onClick={goNext}
                 disabled={currentIndex === artworks.length - 1}
-                className={`absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-10 w-11 h-11 flex items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-white/40 hover:text-white hover:bg-white/12 hover:border-white/20 transition-all duration-300 ${
+                className={`absolute right-1 sm:right-5 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-white/40 hover:text-white hover:bg-white/12 hover:border-white/20 transition-all duration-300 hidden sm:flex ${
                   currentIndex === artworks.length - 1 ? "opacity-0 pointer-events-none" : ""
                 }`}
                 aria-label="Next artwork"
