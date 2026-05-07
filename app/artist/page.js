@@ -54,7 +54,7 @@ export default function ArtistPage() {
             <AnimatedSection direction="left">
               <div className="relative aspect-[4/5] rounded-sm overflow-hidden artwork-image-container">
                 <Image
-                  src="/artists/raihan.jpg"
+                  src="/artists/raihan.webp"
                   alt="Raihan Mohammad Abstract Calligraphy Artist at Art Gallery by Raihan"
                   fill
                   className="object-cover"
@@ -304,7 +304,7 @@ export default function ArtistPage() {
             <AnimatedSection direction="right" className="order-1 lg:order-2">
               <div className="relative aspect-[4/5] rounded-sm overflow-hidden artwork-image-container">
                 <Image
-                  src="/artists/condro.jpg"
+                  src="/artists/condro.webp"
                   alt="Condro Puspitosari Landscape & Nature Painter at Art Gallery by Raihan"
                   fill
                   className="object-cover"

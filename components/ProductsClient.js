@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
 import ArtworkCard from "@/components/ArtworkCard";
 import ArtworkModal from "@/components/ArtworkModal";
@@ -29,9 +29,7 @@ export default function ProductsClient({ artworks }) {
 
     if (statusFilter !== "all") {
       result = result.filter((a) =>
-        statusFilter === "collected"
-          ? a.status === "collected"
-          : a.status !== "collected"
+        statusFilter === "collected" ? a.status === "collected" : a.status !== "collected"
       );
     }
 
@@ -44,6 +42,9 @@ export default function ProductsClient({ artworks }) {
     return result;
   }, [artworks, activeCategory, statusFilter, sortBy]);
 
+  const availableCount = filtered.filter((a) => a.status !== "collected").length;
+  const totalCount = filtered.length;
+
   const openModal = (artwork) => {
     setSelectedArtwork(artwork);
     setModalOpen(true);
@@ -51,59 +52,72 @@ export default function ProductsClient({ artworks }) {
 
   return (
     <>
-      {/* Header */}
-      <section className="pt-32 pb-16 px-6">
-        <div className="max-w-7xl mx-auto text-center">
+      {/* ── Header ── */}
+      <section className="pt-36 pb-16 px-6 relative overflow-hidden">
+        {/* Subtle background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-cream/40 to-transparent" />
+
+        <div className="max-w-7xl mx-auto text-center relative z-10">
           <AnimatedSection>
-            <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-maroon">
-              Curated Collection
-            </span>
-            <h1 className="mt-3 text-4xl sm:text-5xl font-bold text-foreground tracking-tight">
+            <div className="inline-flex items-center gap-3 mb-5">
+              <div className="w-6 h-[1px] bg-maroon/30" />
+              <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-maroon/60">
+                Curated Collection
+              </span>
+              <div className="w-6 h-[1px] bg-maroon/30" />
+            </div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground tracking-tight">
               The Collection
             </h1>
-            <p className="mt-4 text-sm text-warm-gray max-w-md mx-auto leading-relaxed">
+            <p className="mt-5 text-sm text-warm-gray max-w-sm mx-auto leading-relaxed">
               Original works by Raihan and Condro P.S. — each piece a singular
               expression, handmade with intention.
             </p>
-            <div className="w-12 h-[1px] bg-maroon mx-auto mt-6" />
+
+            {/* Live count */}
+            <div className="mt-8 inline-flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-warm-gray/50">
+              <span className="font-semibold text-foreground/50">{availableCount}</span>
+              <span>available</span>
+              <span className="opacity-30">·</span>
+              <span className="font-semibold text-foreground/50">{totalCount}</span>
+              <span>total</span>
+            </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Filters */}
-      <section className="px-6 pb-8 relative z-40">
-        <div className="max-w-7xl mx-auto border-b border-warm-gray/10 pb-6">
-          <AnimatedSection
-            delay={0.2}
-            className="flex flex-col md:flex-row items-center justify-between gap-6"
-          >
-            {/* Category Tabs */}
-            <div className="flex items-center justify-center gap-1 sm:gap-2">
+      {/* ── Filters ── */}
+      <section className="px-6 pb-10 relative z-40 sticky top-20 bg-background/90 backdrop-blur-xl border-b border-warm-gray/8">
+        <div className="max-w-7xl mx-auto py-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-5">
+
+            {/* Category tabs */}
+            <div className="flex items-center gap-1">
               {categories.map((cat) => (
                 <button
                   key={cat.key}
                   onClick={() => setActiveCategory(cat.key)}
-                  className={`relative px-5 py-2.5 text-xs font-medium tracking-[0.15em] uppercase transition-colors duration-300 rounded-sm ${
+                  className={`filter-tab relative px-5 py-2 text-[11px] font-medium tracking-[0.15em] uppercase transition-colors duration-300 rounded-sm ${
                     activeCategory === cat.key
                       ? "text-foreground"
                       : "text-warm-gray hover:text-foreground"
-                  }`}
+                  } ${activeCategory === cat.key ? "active" : ""}`}
                   id={`filter-${cat.key}`}
                 >
                   {cat.label}
                   {activeCategory === cat.key && (
                     <motion.div
                       layoutId="active-tab"
-                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-maroon rounded-full"
-                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-[2px] bg-maroon rounded-full"
+                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
                     />
                   )}
                 </button>
               ))}
             </div>
 
-            {/* Status & Sort dropdowns */}
-            <div className="flex items-center gap-6">
+            {/* Dropdowns */}
+            <div className="flex items-center gap-3">
               <CustomDropdown
                 options={[
                   { value: "all", label: "All" },
@@ -116,43 +130,59 @@ export default function ProductsClient({ artworks }) {
               />
               <CustomDropdown
                 options={[
-                  { value: "newest", label: "Release" },
-                  { value: "a-z", label: "A-Z" },
+                  { value: "newest", label: "Newest" },
+                  { value: "a-z", label: "A – Z" },
                 ]}
                 value={sortBy}
                 onChange={setSortBy}
                 labelPrefix="Sort: "
               />
             </div>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
-      {/* Artwork Grid */}
-      <section className="px-6 pb-24 lg:pb-32">
+      {/* ── Artwork Grid ── */}
+      <section className="px-6 py-12 pb-28 lg:pb-36">
         <div className="max-w-7xl mx-auto">
-          {filtered.length > 0 ? (
-            <motion.div
-              layout
-              className="columns-1 sm:columns-2 lg:columns-3 gap-8 lg:gap-10 space-y-8 lg:space-y-10"
-            >
-              {filtered.map((artwork, index) => (
-                <div key={artwork.id} className="break-inside-avoid mb-8 lg:mb-10">
-                  <ArtworkCard
-                    artwork={artwork}
-                    index={index}
-                    onClick={openModal}
-                  />
+          <AnimatePresence mode="wait">
+            {filtered.length > 0 ? (
+              <motion.div
+                key={activeCategory + statusFilter + sortBy}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="columns-1 sm:columns-2 lg:columns-3 gap-8 lg:gap-10"
+              >
+                {filtered.map((artwork, index) => (
+                  <div key={artwork.id} className="break-inside-avoid mb-8 lg:mb-10">
+                    <ArtworkCard artwork={artwork} index={index} onClick={openModal} />
+                  </div>
+                ))}
+              </motion.div>
+            ) : (
+              <motion.div
+                key="empty"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-center py-28"
+              >
+                <div className="w-12 h-12 rounded-full bg-warm-gray/8 flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-5 h-5 text-warm-gray/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
                 </div>
-              ))}
-            </motion.div>
-          ) : (
-            <div className="text-center py-20">
-              <p className="text-sm text-warm-gray">
-                No artworks match your filters.
-              </p>
-            </div>
-          )}
+                <p className="text-sm text-warm-gray/50">No artworks match your filters.</p>
+                <button
+                  onClick={() => { setActiveCategory("all"); setStatusFilter("all"); }}
+                  className="mt-4 text-xs text-maroon/70 hover:text-maroon tracking-[0.1em] uppercase font-medium underline underline-offset-4 transition-colors"
+                >
+                  Clear filters
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 

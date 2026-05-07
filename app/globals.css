@@ -16,7 +16,7 @@
   --font-sans: var(--font-montserrat);
 }
 
-/* Smooth scroll */
+/* ──── Base ──── */
 html {
   scroll-behavior: smooth;
 }
@@ -29,39 +29,32 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-cream);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--color-warm-gray);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-charcoal);
-}
+/* ──── Scrollbar ──── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-warm-gray)/40; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-maroon); }
 
-/* Selection */
+/* ──── Selection ──── */
 ::selection {
   background-color: var(--color-maroon);
   color: #fff;
 }
 
-/* Artwork image zoom on hover */
+/* ──── Artwork card image hover ──── */
 .artwork-image-container {
   overflow: hidden;
+  position: relative;
 }
 .artwork-image-container img {
-  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
 }
 .artwork-image-container:hover img {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
-/* Modal zoom */
+/* ──── Modal zoom ──── */
 .modal-zoom-container {
   cursor: zoom-in;
   overflow: hidden;
@@ -69,73 +62,166 @@ body {
 }
 .modal-zoom-container.zoomed {
   cursor: zoom-out;
+  overflow: auto;
 }
 
-/* Page transitions */
-.page-transition-enter {
-  opacity: 0;
-  transform: translateY(12px);
-}
-.page-transition-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-/* Subtle line decoration */
-.line-accent::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 1px;
-  background: var(--color-maroon);
-  margin-top: 1.5rem;
-}
-
-.line-accent-center::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 1px;
-  background: var(--color-maroon);
-  margin: 1.5rem auto 0;
-}
-
-/* Animated underline for nav links */
+/* ──── Nav animated underline ──── */
 .nav-link {
   position: relative;
 }
 .nav-link::after {
   content: '';
   position: absolute;
-  bottom: -2px;
+  bottom: -3px;
   left: 0;
   width: 0;
   height: 1px;
-  background-color: var(--color-foreground);
-  transition: width 0.3s ease;
+  background-color: currentColor;
+  transition: width 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link.active::after {
   width: 100%;
 }
 
-/* WhatsApp button pulse */
-@keyframes gentle-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(107, 28, 42, 0.4); }
-  50% { box-shadow: 0 0 0 8px rgba(107, 28, 42, 0); }
+/* ──── Line accent util ──── */
+.line-accent::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: var(--color-maroon);
+  margin-top: 1.5rem;
 }
-.whatsapp-pulse {
-  animation: gentle-pulse 2.5s ease-in-out infinite;
+.line-accent-center::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: var(--color-maroon);
+  margin: 1.5rem auto 0;
 }
 
-/* Hero lotus background */
-.hero-lotus-bg {
-  position: relative;
+/* ──── WhatsApp pulse ──── */
+@keyframes gentle-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(107, 28, 42, 0.35); }
+  50%       { box-shadow: 0 0 0 10px rgba(107, 28, 42, 0); }
 }
-.hero-lotus-bg::before {
+.whatsapp-pulse {
+  animation: gentle-pulse 2.8s ease-in-out infinite;
+}
+
+/* ──── Shimmer loading ──── */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.shimmer-loading {
+  background: linear-gradient(90deg, #f0ece7 25%, #e8e2da 50%, #f0ece7 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+/* ──── Gallery card hover glow ──── */
+.card-hover-glow {
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+.card-hover-glow:hover {
+  box-shadow: 0 12px 40px -8px rgba(107, 28, 42, 0.15);
+  transform: translateY(-4px);
+}
+
+/* ──── Modal backdrop blur ──── */
+.modal-backdrop {
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+}
+
+/* ──── Premium button base ──── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: var(--color-foreground);
+  color: var(--color-background);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+.btn-primary:hover {
+  background: var(--color-charcoal);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px -4px rgba(26, 26, 26, 0.25);
+}
+
+/* ──── Hero text mask gradient ──── */
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light), var(--color-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ──── Floating scroll indicator ──── */
+@keyframes float-scroll {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50%       { transform: translateY(8px); opacity: 1; }
+}
+.scroll-indicator {
+  animation: float-scroll 2s ease-in-out infinite;
+}
+
+/* ──── Filter tab hover shimmer ──── */
+.filter-tab {
+  position: relative;
+  overflow: hidden;
+}
+.filter-tab::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35);
-  z-index: 1;
+  background: var(--color-maroon);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 2px;
+  z-index: -1;
+}
+.filter-tab.active::before,
+.filter-tab:hover::before {
+  opacity: 0.04;
+}
+
+/* ──── Image reveal animation ──── */
+@keyframes img-reveal {
+  0%   { clip-path: inset(0 100% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
+}
+.img-reveal {
+  animation: img-reveal 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+/* ──── Modal close button ──── */
+.modal-close-btn {
+  position: relative;
+  overflow: hidden;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.modal-close-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  transform: scale(0);
+  transition: transform 0.3s ease;
+}
+.modal-close-btn:hover::before {
+  transform: scale(1);
+}
+.modal-close-btn:hover {
+  transform: rotate(90deg);
 }
