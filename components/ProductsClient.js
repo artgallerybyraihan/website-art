@@ -70,7 +70,7 @@ export default function ProductsClient({ artworks }) {
               The Collection
             </h1>
             <p className="mt-5 text-sm text-warm-gray max-w-sm mx-auto leading-relaxed">
-              Original works by Raihan and Condro P.S. — each piece a singular
+              Original works by Raihan and Condro P.S., each piece a singular
               expression, handmade with intention.
             </p>
 
@@ -153,7 +153,7 @@ export default function ProductsClient({ artworks }) {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="columns-1 sm:columns-2 lg:columns-3 gap-8 lg:gap-10"
+                className="columns-2 sm:columns-2 lg:columns-3 gap-4 sm:gap-8 lg:gap-10"
               >
                 {filtered.map((artwork, index) => (
                   <div key={artwork.id} className="break-inside-avoid mb-8 lg:mb-10">

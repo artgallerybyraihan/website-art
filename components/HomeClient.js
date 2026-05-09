@@ -81,7 +81,7 @@ export default function HomeClient({ featuredArtworks }) {
             transition={{ duration: 0.8, delay: 0.26, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="mt-5 sm:mt-7 text-sm sm:text-base lg:text-lg text-warm-gray max-w-xl mx-auto leading-relaxed"
           >
-            Original contemporary calligraphy & atmospheric landscape paintings —
+            Original contemporary calligraphy and atmospheric landscape paintings
             handmade in Indonesia, curated for the discerning collector.
           </motion.p>
 
@@ -120,7 +120,7 @@ export default function HomeClient({ featuredArtworks }) {
           >
             {[
               { num: "100+", label: "Original Works" },
-              { num: "2020", label: "Est." },
+              { num: "25+", label: "National Exhibitions" },
               { num: "2", label: "Artists" },
             ].map((stat, i) => (
               <div key={i} className="text-center">
@@ -153,11 +153,11 @@ export default function HomeClient({ featuredArtworks }) {
               Selected Works
             </h2>
             <p className="mt-4 text-sm text-warm-gray/70 max-w-sm mx-auto">
-              A curated taste of the collection — click any work to explore.
+              A curated taste of the collection, click any work to explore.
             </p>
           </AnimatedSection>
 
-          <div className="columns-1 sm:columns-2 lg:columns-4 gap-6 lg:gap-8 space-y-8 lg:space-y-0">
+          <div className="columns-2 lg:columns-4 gap-6 lg:gap-8 space-y-6 lg:space-y-0">
             {featuredArtworks.map((artwork, index) => (
               <div key={artwork.id} className="break-inside-avoid mb-8">
                 <ArtworkCard artwork={artwork} index={index} onClick={openModal} />
@@ -205,8 +205,8 @@ export default function HomeClient({ featuredArtworks }) {
           <AnimatedSection delay={0.2} className="mt-10 text-center">
             <p className="text-base sm:text-lg text-warm-gray leading-relaxed max-w-2xl mx-auto">
               Born from a shared love of art, Artgallery by Raihan is a
-              mother-and-son studio rooted in Indonesia. Each piece — whether
-              calligraphic abstraction or atmospheric landscape — is an
+              mother-and-son studio rooted in Indonesia. Each piece, whether
+              calligraphic abstraction or atmospheric landscape, is an
               original, handmade work of art created with intention, patience,
               and soul.
             </p>
@@ -217,8 +217,8 @@ export default function HomeClient({ featuredArtworks }) {
             <AnimatedSection delay={0.1} direction="left">
               <div className="relative aspect-[4/5] rounded-sm overflow-hidden artwork-image-container group">
                 <Image
-                  src="/artworks/cal-001/main.webp"
-                  alt="Contemporary calligraphy artwork by Raihan"
+                  src="/artists/raihan.webp"
+                  alt="Raihan Mohammad, Abstract Calligraphy Artist"
                   fill
                   className="object-cover"
                   sizes="(max-width: 640px) 100vw, 50vw"
@@ -234,8 +234,8 @@ export default function HomeClient({ featuredArtworks }) {
             <AnimatedSection delay={0.2} direction="right">
               <div className="relative aspect-[4/5] rounded-sm overflow-hidden artwork-image-container group">
                 <Image
-                  src="/artworks/lan-001/main.webp"
-                  alt="Landscape painting by Condro P.S."
+                  src="/artists/condro.webp"
+                  alt="Condro Puspitosari, Landscape Painter"
                   fill
                   className="object-cover"
                   sizes="(max-width: 640px) 100vw, 50vw"
@@ -294,7 +294,7 @@ export default function HomeClient({ featuredArtworks }) {
             Begin Your Collection
           </h2>
           <p className="mt-5 text-sm text-white/40 leading-relaxed max-w-md mx-auto">
-            Every artwork is one of a kind — reach out to discuss a piece that
+            Every artwork is one of a kind, reach out to discuss a piece that
             speaks to you.
           </p>
           <div className="mt-10">

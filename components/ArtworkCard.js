@@ -26,7 +26,7 @@ export default function ArtworkCard({ artwork, index = 0, onClick }) {
       <div className="artwork-image-container relative bg-cream rounded-sm overflow-hidden">
         <img
           src={primaryImage}
-          alt={`${artwork.title} — ${artwork.medium} by ${artwork.artist}`}
+          alt={`${artwork.title} by ${artwork.artist}, ${artwork.medium}`}
           className="w-full h-auto"
           loading="lazy"
         />

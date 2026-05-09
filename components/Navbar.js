@@ -148,7 +148,7 @@ export default function Navbar() {
               </div>
             </motion.div>
 
-            <div className="flex flex-col items-center gap-8">
+            <div className="flex flex-col items-center gap-5">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.href}
@@ -159,7 +159,7 @@ export default function Navbar() {
                 >
                   <Link
                     href={link.href}
-                    className={`text-3xl font-bold tracking-[0.05em] uppercase transition-colors duration-300 ${
+                    className={`text-xl font-bold tracking-[0.12em] uppercase transition-colors duration-300 ${
                       pathname === link.href
                         ? "text-maroon"
                         : "text-[#1A1A1A]/40 hover:text-[#1A1A1A]"
