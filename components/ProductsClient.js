@@ -6,19 +6,23 @@ import AnimatedSection from "@/components/AnimatedSection";
 import ArtworkCard from "@/components/ArtworkCard";
 import ArtworkModal from "@/components/ArtworkModal";
 import CustomDropdown from "@/components/CustomDropdown";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
-const categories = [
-  { key: "all", label: "All Works" },
-  { key: "calligraphy", label: "Calligraphy" },
-  { key: "landscape", label: "Landscape" },
-];
+
 
 export default function ProductsClient({ artworks }) {
+  const { t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
   const [sortBy, setSortBy] = useState("newest");
   const [selectedArtwork, setSelectedArtwork] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+
+  const categories = [
+    { key: "all", label: t("collection.allWorks") },
+    { key: "calligraphy", label: t("collection.calligraphy") },
+    { key: "landscape", label: t("collection.landscape") },
+  ];
 
   const filtered = useMemo(() => {
     let result = artworks;
@@ -62,25 +66,24 @@ export default function ProductsClient({ artworks }) {
             <div className="inline-flex items-center gap-3 mb-5">
               <div className="w-6 h-[1px] bg-maroon/30" />
               <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-maroon/60">
-                Curated Collection
+                {t("collection.label")}
               </span>
               <div className="w-6 h-[1px] bg-maroon/30" />
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground tracking-tight">
-              The Collection
+              {t("collection.title")}
             </h1>
             <p className="mt-5 text-sm text-warm-gray max-w-sm mx-auto leading-relaxed">
-              Original works by Raihan and Condro P.S., each piece a singular
-              expression, handmade with intention.
+              {t("collection.subtitle")}
             </p>
 
             {/* Live count */}
             <div className="mt-8 inline-flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-warm-gray/50">
               <span className="font-semibold text-foreground/50">{availableCount}</span>
-              <span>available</span>
+              <span>{t("collection.available")}</span>
               <span className="opacity-30">·</span>
               <span className="font-semibold text-foreground/50">{totalCount}</span>
-              <span>total</span>
+              <span>{t("collection.total")}</span>
             </div>
           </AnimatedSection>
         </div>
@@ -120,22 +123,22 @@ export default function ProductsClient({ artworks }) {
             <div className="flex items-center gap-3">
               <CustomDropdown
                 options={[
-                  { value: "all", label: "All" },
-                  { value: "available", label: "Available" },
-                  { value: "collected", label: "Collected" },
+                  { value: "all", label: t("collection.statusAll") },
+                  { value: "available", label: t("collection.statusAvailable") },
+                  { value: "collected", label: t("collection.statusCollected") },
                 ]}
                 value={statusFilter}
                 onChange={setStatusFilter}
-                labelPrefix="Status: "
+                labelPrefix={t("collection.statusPrefix")}
               />
               <CustomDropdown
                 options={[
-                  { value: "newest", label: "Newest" },
-                  { value: "a-z", label: "A – Z" },
+                  { value: "newest", label: t("collection.sortNewest") },
+                  { value: "a-z", label: t("collection.sortAZ") },
                 ]}
                 value={sortBy}
                 onChange={setSortBy}
-                labelPrefix="Sort: "
+                labelPrefix={t("collection.sortPrefix")}
               />
             </div>
           </div>
@@ -173,12 +176,12 @@ export default function ProductsClient({ artworks }) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <p className="text-sm text-warm-gray/50">No artworks match your filters.</p>
+                <p className="text-sm text-warm-gray/50">{t("collection.noResults")}</p>
                 <button
                   onClick={() => { setActiveCategory("all"); setStatusFilter("all"); }}
                   className="mt-4 text-xs text-maroon/70 hover:text-maroon tracking-[0.1em] uppercase font-medium underline underline-offset-4 transition-colors"
                 >
-                  Clear filters
+                  {t("collection.clearFilters")}
                 </button>
               </motion.div>
             )}

@@ -8,8 +8,10 @@ import AnimatedSection from "@/components/AnimatedSection";
 import ArtworkCard from "@/components/ArtworkCard";
 import ArtworkModal from "@/components/ArtworkModal";
 import { getWhatsAppLinkGeneral } from "@/lib/whatsapp";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function HomeClient({ featuredArtworks }) {
+  const { t } = useLanguage();
   const [selectedArtwork, setSelectedArtwork] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -57,7 +59,7 @@ export default function HomeClient({ featuredArtworks }) {
           >
             <div className="w-6 h-[1px] bg-maroon/40" />
             <span className="text-[10px] font-semibold tracking-[0.35em] uppercase text-maroon/70">
-              A Family Art House
+              {t("hero.label")}
             </span>
             <div className="w-6 h-[1px] bg-maroon/40" />
           </motion.div>
@@ -69,9 +71,9 @@ export default function HomeClient({ featuredArtworks }) {
             transition={{ duration: 0.8, delay: 0.12, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.05]"
           >
-            Where Art
+            {t("hero.title1")}
             <br />
-            <span className="text-charcoal/40 font-light italic">Meets Devotion</span>
+            <span className="text-charcoal/40 font-light italic">{t("hero.title2")}</span>
           </motion.h1>
 
           {/* Subtext */}
@@ -81,8 +83,7 @@ export default function HomeClient({ featuredArtworks }) {
             transition={{ duration: 0.8, delay: 0.26, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="mt-5 sm:mt-7 text-sm sm:text-base lg:text-lg text-warm-gray max-w-xl mx-auto leading-relaxed"
           >
-            Original contemporary calligraphy and atmospheric landscape paintings
-            handmade in Indonesia, curated for the discerning collector.
+            {t("hero.subtitle")}
           </motion.p>
 
           {/* CTA buttons */}
@@ -97,7 +98,7 @@ export default function HomeClient({ featuredArtworks }) {
               className="btn-primary"
               id="hero-cta"
             >
-              Explore the Collection
+              {t("hero.cta")}
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -107,7 +108,7 @@ export default function HomeClient({ featuredArtworks }) {
               className="inline-flex items-center gap-2 px-8 py-3.5 text-xs font-medium tracking-[0.2em] uppercase text-foreground/60 hover:text-foreground border border-foreground/12 hover:border-foreground/25 rounded-sm transition-all duration-300"
               id="hero-artist-cta"
             >
-              Meet the Artists
+              {t("hero.ctaArtist")}
             </Link>
           </motion.div>
 
@@ -119,9 +120,9 @@ export default function HomeClient({ featuredArtworks }) {
             className="mt-12 sm:mt-16 flex items-center justify-center gap-6 sm:gap-8 lg:gap-12"
           >
             {[
-              { num: "100+", label: "Original Works" },
-              { num: "25+", label: "National Exhibitions" },
-              { num: "2", label: "Artists" },
+              { num: "100+", label: t("hero.stat1") },
+              { num: "25+", label: t("hero.stat2") },
+              { num: "2", label: t("hero.stat3") },
             ].map((stat, i) => (
               <div key={i} className="text-center">
                 <div className="text-xl font-bold text-foreground/80 tracking-tight">{stat.num}</div>
@@ -134,7 +135,7 @@ export default function HomeClient({ featuredArtworks }) {
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator">
           <div className="flex flex-col items-center gap-2 opacity-40">
-            <span className="text-[9px] tracking-[0.25em] uppercase text-warm-gray">Scroll</span>
+            <span className="text-[9px] tracking-[0.25em] uppercase text-warm-gray">{t("hero.scroll")}</span>
             <div className="w-[1px] h-8 bg-gradient-to-b from-warm-gray to-transparent" />
           </div>
         </div>
@@ -146,14 +147,14 @@ export default function HomeClient({ featuredArtworks }) {
           <AnimatedSection className="text-center mb-16">
             <div className="inline-flex items-center gap-3 mb-4">
               <div className="w-6 h-[1px] bg-maroon/30" />
-              <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-maroon/60">Gallery</span>
+              <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-maroon/60">{t("featured.label")}</span>
               <div className="w-6 h-[1px] bg-maroon/30" />
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
-              Selected Works
+              {t("featured.title")}
             </h2>
             <p className="mt-4 text-sm text-warm-gray/70 max-w-sm mx-auto">
-              A curated taste of the collection, click any work to explore.
+              {t("featured.subtitle")}
             </p>
           </AnimatedSection>
 
@@ -171,7 +172,7 @@ export default function HomeClient({ featuredArtworks }) {
               className="inline-flex items-center gap-2.5 text-xs font-medium tracking-[0.2em] uppercase text-foreground/60 hover:text-maroon transition-colors duration-300 group"
               id="view-all-collection"
             >
-              View Full Collection
+              {t("featured.viewAll")}
               <svg className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -194,21 +195,17 @@ export default function HomeClient({ featuredArtworks }) {
           <AnimatedSection className="text-center">
             <div className="inline-flex items-center gap-3 mb-4">
               <div className="w-6 h-[1px] bg-maroon/30" />
-              <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-maroon/60">Our Story</span>
+              <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-maroon/60">{t("story.label")}</span>
               <div className="w-6 h-[1px] bg-maroon/30" />
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
-              A Family Art House
+              {t("story.title")}
             </h2>
           </AnimatedSection>
 
           <AnimatedSection delay={0.2} className="mt-10 text-center">
             <p className="text-base sm:text-lg text-warm-gray leading-relaxed max-w-2xl mx-auto">
-              Born from a shared love of art, Artgallery by Raihan is a
-              mother-and-son studio rooted in Indonesia. Each piece, whether
-              calligraphic abstraction or atmospheric landscape, is an
-              original, handmade work of art created with intention, patience,
-              and soul.
+              {t("story.text")}
             </p>
           </AnimatedSection>
 
@@ -226,7 +223,7 @@ export default function HomeClient({ featuredArtworks }) {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">
                   <h3 className="text-base font-bold text-white tracking-wide">Raihan Mohammad</h3>
-                  <p className="text-[10px] text-white/50 tracking-[0.2em] uppercase mt-1">Contemporary Calligraphy</p>
+                  <p className="text-[10px] text-white/50 tracking-[0.2em] uppercase mt-1">{t("story.raihanRole")}</p>
                 </div>
               </div>
             </AnimatedSection>
@@ -243,7 +240,7 @@ export default function HomeClient({ featuredArtworks }) {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">
                   <h3 className="text-base font-bold text-white tracking-wide">Condro Puspitosari</h3>
-                  <p className="text-[10px] text-white/50 tracking-[0.2em] uppercase mt-1">Landscape Painting</p>
+                  <p className="text-[10px] text-white/50 tracking-[0.2em] uppercase mt-1">{t("story.condroRole")}</p>
                 </div>
               </div>
             </AnimatedSection>
@@ -255,7 +252,7 @@ export default function HomeClient({ featuredArtworks }) {
               className="inline-flex items-center gap-2.5 text-xs font-medium tracking-[0.2em] uppercase text-foreground/60 hover:text-maroon transition-colors duration-300 group"
               id="meet-artists-cta"
             >
-              Meet the Artists
+              {t("story.meetArtists")}
               <svg className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -286,16 +283,15 @@ export default function HomeClient({ featuredArtworks }) {
           <div className="inline-flex items-center gap-3 mb-6">
             <div className="w-6 h-[1px] bg-maroon/50" />
             <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-maroon/80">
-              Start Your Collection
+              {t("cta.label")}
             </span>
             <div className="w-6 h-[1px] bg-maroon/50" />
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-            Begin Your Collection
+            {t("cta.title")}
           </h2>
           <p className="mt-5 text-sm text-white/40 leading-relaxed max-w-md mx-auto">
-            Every artwork is one of a kind, reach out to discuss a piece that
-            speaks to you.
+            {t("cta.subtitle")}
           </p>
           <div className="mt-10">
             <a
@@ -308,7 +304,7 @@ export default function HomeClient({ featuredArtworks }) {
               <svg className="w-5 h-5 shrink-0 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
               </svg>
-              Enquire via WhatsApp
+              {t("cta.button")}
             </a>
           </div>
         </AnimatedSection>

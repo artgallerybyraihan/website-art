@@ -3,8 +3,17 @@ Artist: Raihan Mohammad
 Category: calligraphy
 Medium: acrylic on canvas
 Size: 120 x 70 cm
+SizeW: 
+SizeH: 
+SizeD: 
 Year: 2026
 Status: available
+Frame: Not Framed
+ReadyToHang: No
+Authenticity: Certificate is Included
+Packaging: 
+Handling: 
+ShipsFrom: Indonesia
 Description: urat ini adalah yang pertama kali turun pada Rasul shallallahu ‘alaihi wa sallam-. Surat tersebut turun di awal-awal kenabian. Ketika itu beliau tidak tahu tulis menulis dan tidak mengerti tentang iman. Lantas Jibril datang dengan membawa risalah atau wahyu. Lalu Jibril memerintahkan nabi untuk membacanya. Beliau -shallallahu ‘alaihi wa sallam- enggan. Beliau berkata,
 LongDescription:
 مَا أَنَا بِقَارِئٍ

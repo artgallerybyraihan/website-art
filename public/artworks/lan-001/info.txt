@@ -3,8 +3,17 @@ Artist: Condro Puspitosari
 Category: landscape
 Medium: Oil on Canvas
 Size: 80 × 120 cm (31.5" × 47.2")
+SizeW: 
+SizeH: 
+SizeD: 
 Year: 2024
-Status: available
+Status: collected
+Frame: Not Framed
+ReadyToHang: No
+Authenticity: Certificate is Included
+Packaging: 
+Handling: 
+ShipsFrom: Indonesia
 Description: Golden light breaks through veils of mist, revealing the lush valleys of Java in a moment of quiet revelation. The landscape breathes.
 LongDescription:
 "Morning Mist Over the Valley" captures a fleeting moment in the Indonesian highlands that brief window when dawn light pierces through the morning mist, illuminating the lush valleys of Java in golden warmth. The landscape seems to breathe, alive with moisture and light.

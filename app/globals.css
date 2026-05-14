@@ -250,3 +250,18 @@ body {
     border-radius: 4px;
   }
 }
+
+/* ──── RTL Support ──── */
+[dir="rtl"] .nav-link::after {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .text-center {
+  text-align: center;
+}
+

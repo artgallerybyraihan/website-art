@@ -1,7 +1,10 @@
+"use client";
 import Link from "next/link";
 import { getWhatsAppLinkGeneral } from "@/lib/whatsapp";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -26,8 +29,7 @@ export default function Footer() {
               </p>
             </div>
             <p className="text-sm leading-relaxed text-white/40 max-w-xs">
-              A family art gallery presenting original abstract calligraphy
-              and landscape & nature paintings. Handmade art from Indonesia.
+              {t("footer.tagline")}
             </p>
             {/* Social icons row */}
             <div className="flex items-center gap-3 pt-1">
@@ -61,14 +63,14 @@ export default function Footer() {
           {/* Navigation */}
           <div className="space-y-5">
             <h4 className="text-[10px] font-semibold tracking-[0.2em] uppercase text-white/25">
-              Navigation
+              {t("footer.navigation")}
             </h4>
             <nav className="flex flex-col gap-2.5">
               {[
-                { href: "/", label: "Home" },
-                { href: "/products", label: "Collection" },
-                { href: "/artist", label: "Artists" },
-                { href: "/contact", label: "Contact" },
+                { href: "/", label: t("nav.home") },
+                { href: "/products", label: t("nav.collection") },
+                { href: "/artist", label: t("nav.artists") },
+                { href: "/contact", label: t("nav.contact") },
               ].map((link) => (
                 <Link
                   key={link.href}
@@ -84,7 +86,7 @@ export default function Footer() {
           {/* Contact */}
           <div className="space-y-5">
             <h4 className="text-[10px] font-semibold tracking-[0.2em] uppercase text-white/25">
-              Get in Touch
+              {t("footer.getInTouch")}
             </h4>
             <div className="flex flex-col gap-3">
               <a
@@ -119,10 +121,10 @@ export default function Footer() {
         <div className="mt-16 pt-8 border-t border-white/6">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-3">
             <p className="text-[11px] text-white/20 tracking-wide">
-              © {currentYear} Artgallery by Raihan. All rights reserved.
+              © {currentYear} Artgallery by Raihan. {t("footer.rights")}
             </p>
             <p className="text-[11px] text-white/15 italic font-light tracking-wider">
-              Every piece is an original, handmade work of art
+              {t("footer.motto")}
             </p>
           </div>
         </div>

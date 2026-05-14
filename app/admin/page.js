@@ -1,6 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
 import Image from "next/image";
+import AdminArtworkManager from "@/components/AdminArtworkManager";
 
 // ── Options ─────────────────────────────────────────────────────────────────
 const MEDIUM_OPTIONS    = ["Acrylic on Canvas", "Oil on Canvas"];
@@ -385,6 +386,11 @@ export default function AdminPage() {
             </button>
             <p className="text-[10px] text-[#9C9588]/50 text-center pb-8">File disimpan otomatis di folder public/artworks dan langsung tampil di gallery</p>
           </form>
+        </div>
+
+        {/* ── SECTION: Kelola Karya ──────────────────────────────────────── */}
+        <div className="border-t border-[#E8E0D6] pt-10">
+          <AdminArtworkManager password={password} />
         </div>
       </div>
     </div>

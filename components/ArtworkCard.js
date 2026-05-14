@@ -3,8 +3,10 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { getPrimaryImage } from "@/lib/utils";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function ArtworkCard({ artwork, index = 0, onClick }) {
+  const { t } = useLanguage();
   const primaryImage = getPrimaryImage(artwork);
   const imageCount = artwork.images?.length || 1;
 
@@ -38,7 +40,7 @@ export default function ArtworkCard({ artwork, index = 0, onClick }) {
         {artwork.status === "collected" && (
           <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px] flex items-center justify-center z-10">
             <span className="text-white font-medium tracking-[0.3em] uppercase text-[10px] border border-white/30 px-4 py-2 bg-black/40 backdrop-blur-sm rounded-sm">
-              Collected
+              {t("card.collected")}
             </span>
           </div>
         )}
