@@ -186,8 +186,7 @@ export default function ArtworkModal({ artwork, artworks = [], isOpen, onClose }
                 variants={{ enter: d => ({ x: d > 0 ? 60 : -60, opacity: 0 }), center: { x: 0, opacity: 1 }, exit: d => ({ x: d > 0 ? -60 : 60, opacity: 0 }) }}
                 initial="enter" animate="center" exit="exit"
                 transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="w-full max-w-5xl flex flex-col lg:flex-row gap-4 lg:gap-6"
-                style={{ maxHeight: "90dvh" }}
+                className="w-full max-w-5xl flex flex-col lg:flex-row gap-4 lg:gap-6 overflow-y-auto lg:overflow-y-visible max-h-[92dvh] lg:max-h-[90dvh] pt-14 pb-6 lg:pt-0 lg:pb-0"
               >
                 {/* Thumbnail strip */}
                 {totalImages > 1 && (
@@ -205,7 +204,7 @@ export default function ArtworkModal({ artwork, artworks = [], isOpen, onClose }
 
                 {/* Main image */}
                 <div
-                  className="flex-1 relative flex items-center justify-center order-1 lg:order-2 max-h-[45dvh] lg:max-h-[80dvh]"
+                  className="flex-1 relative flex items-center justify-center order-1 lg:order-2 min-h-[40dvh] lg:min-h-0 lg:max-h-[80dvh]"
                   onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}
                 >
                   <AnimatePresence mode="wait">
@@ -215,7 +214,7 @@ export default function ArtworkModal({ artwork, artworks = [], isOpen, onClose }
                       className="relative w-full h-full flex items-center justify-center">
                       <img src={currentImages[imageIndex]}
                         alt={`${current.title} by ${current.artist}`}
-                        className={`max-w-full max-h-[45dvh] lg:max-h-[80dvh] object-contain rounded-sm ${current.status === "collected" ? "opacity-85" : ""}`}
+                        className={`max-w-full max-h-[50dvh] lg:max-h-[80dvh] object-contain rounded-sm ${current.status === "collected" ? "opacity-85" : ""}`}
                         style={{ boxShadow: "0 24px 60px -12px rgba(0,0,0,0.7)" }}
                       />
                       {current.status === "collected" && (
@@ -248,20 +247,22 @@ export default function ArtworkModal({ artwork, artworks = [], isOpen, onClose }
                 </div>
 
                 {/* ── Details Panel (right) ──────────────────────────────── */}
-                <div className="order-3 lg:w-[300px] shrink-0 flex flex-col max-h-[40dvh] lg:max-h-[80dvh]">
-                  {/* Status + Title (fixed top) */}
-                  <div className="shrink-0 space-y-3 pb-3 border-b border-white/8">
-                    <div className="flex items-center gap-2">
-                      {current.status === "collected" ? (
-                        <><div className="w-1.5 h-1.5 rounded-full bg-white/25" /><span className="text-[10px] tracking-[0.2em] uppercase text-white/40 font-medium">{t("modal.collected")}</span></>
-                      ) : (
-                        <><motion.div animate={{ scale:[1,1.4,1], opacity:[0.6,1,0.6] }} transition={{ duration:2, repeat:Infinity }} className="w-1.5 h-1.5 rounded-full bg-maroon" />
-                        <span className="text-[10px] tracking-[0.2em] uppercase text-maroon font-medium">{t("collection.statusAvailable")}</span></>
-                      )}
-                    </div>
-                    <div>
-                      <h2 className="text-lg sm:text-xl font-bold text-white leading-tight tracking-tight">{current.title}</h2>
-                      <p className="text-sm text-white/45 mt-1 font-medium">{current.artist}</p>
+                <div className="order-3 lg:w-[300px] shrink-0 flex flex-col lg:max-h-[80dvh]">
+                  {/* Title + Status (fixed top) */}
+                  <div className="shrink-0 space-y-2 pb-3 border-b border-white/8">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex-1 min-w-0">
+                        <h2 className="text-lg sm:text-xl font-bold text-white leading-tight tracking-tight">{current.title}</h2>
+                        <p className="text-sm text-white/45 mt-1 font-medium">{current.artist}</p>
+                      </div>
+                      <div className="shrink-0 flex items-center gap-1.5 mt-1">
+                        {current.status === "collected" ? (
+                          <><div className="w-1.5 h-1.5 rounded-full bg-white/25" /><span className="text-[10px] tracking-[0.15em] uppercase text-white/40 font-medium">{t("modal.collected")}</span></>
+                        ) : (
+                          <><motion.div animate={{ scale:[1,1.4,1], opacity:[0.6,1,0.6] }} transition={{ duration:2, repeat:Infinity }} className="w-1.5 h-1.5 rounded-full bg-maroon" />
+                          <span className="text-[10px] tracking-[0.15em] uppercase text-maroon font-medium">{t("collection.statusAvailable")}</span></>
+                        )}
+                      </div>
                     </div>
                     <div className="text-xs text-white/50">{current.medium}{current.size && ` · ${current.size}`}</div>
                   </div>
@@ -277,7 +278,7 @@ export default function ArtworkModal({ artwork, artworks = [], isOpen, onClose }
                   </div>
 
                   {/* Tab content (scrollable) */}
-                  <div className="flex-1 overflow-y-auto mt-4 pr-1 scrollbar-thin space-y-2">
+                  <div className="flex-1 lg:overflow-y-auto mt-4 pr-1 scrollbar-thin space-y-2">
                     <AnimatePresence mode="wait">
                       <motion.div key={activeTab}
                         initial={{ opacity:0, y:8 }} animate={{ opacity:1, y:0 }} exit={{ opacity:0, y:-4 }}
