@@ -21,3 +21,44 @@ LongDescription:
 Condro Puspitosari worked on this canvas over several weeks, building layer upon layer of oil paint to achieve the atmospheric depth that makes the mist feel tangible. The technique of layered glazes thin, translucent applications of color over dried layers creates a luminosity that cannot be achieved any other way.
 
 This painting is not a photograph of a place. It is a feeling made visible the sensation of standing in silence as the world slowly reveals itself at dawn.
+
+Title_id: Kabut Pagi Di Atas Lembah
+Description_id: Cahaya keemasan menerobos tabir kabut, menyingkapkan lembah subur di Jawa dalam momen yang hening. Pemandangannya bernafas.
+LongDescription_id:
+"Morning Mist Over the Valley" mengabadikan momen singkat di dataran tinggi Indonesia yang merupakan jendela singkat ketika cahaya fajar menembus kabut pagi, menyinari lembah subur di Jawa dalam kehangatan keemasan. Pemandangannya tampak bernafas, hidup dengan kelembapan dan cahaya. 
+
+Condro Puspitosari mengerjakan kanvas ini selama beberapa minggu, membuat lapisan demi lapisan cat minyak untuk mencapai kedalaman atmosfer yang membuat kabut terasa nyata. Teknik glasir berlapis yang menerapkan warna tipis dan tembus cahaya pada lapisan kering menciptakan luminositas yang tidak dapat dicapai dengan cara lain. 
+
+Lukisan ini bukanlah foto suatu tempat. Ini adalah perasaan yang memperlihatkan sensasi berdiri dalam keheningan saat dunia perlahan menampakkan dirinya saat fajar.
+Title_ar: ضباب الصباح فوق الوادي
+Description_ar: يخترق الضوء الذهبي حجاب الضباب، ليكشف عن وديان جاوة الخصبة في لحظة من الوحي الهادئ. المناظر الطبيعية تتنفس.
+LongDescription_ar:
+يلتقط فيلم "ضباب الصباح فوق الوادي" لحظة عابرة في المرتفعات الإندونيسية التي تختصر النافذة عندما يخترق ضوء الفجر ضباب الصباح، ويضيء وديان جاوة الخصبة بالدفء الذهبي. يبدو أن المناظر الطبيعية تتنفس وتنبض بالحياة بالرطوبة والضوء. 
+
+عمل كوندرو بوسبيتوساري على هذه اللوحة القماشية على مدار عدة أسابيع، حيث قام ببناء طبقة فوق طبقة من الطلاء الزيتي لتحقيق العمق الجوي الذي يجعل الضباب يبدو ملموسًا. إن تقنية الطلاء الزجاجي ذو الطبقات الرقيقة والشفافة من الألوان على الطبقات المجففة تخلق لمعانًا لا يمكن تحقيقه بأي طريقة أخرى. 
+
+هذه اللوحة ليست صورة لمكان. إنه شعور أصبح مرئيًا، وهو الإحساس بالوقوف في صمت بينما يكشف العالم عن نفسه ببطء عند الفجر.
+Title_tr: Vadi Üzerindeki Sabah Sisi
+Description_tr: Altın rengi ışık, sis perdelerini delip geçerek Java'nın yemyeşil vadilerini sessiz bir aydınlanma anında ortaya çıkarıyor. Manzara nefes alıyor.
+LongDescription_tr:
+"Vadi Üzerindeki Sabah Sisi", Endonezya'nın dağlık bölgelerinde, şafak ışığının sabah sisini delip geçerek Java'nın yemyeşil vadilerini altın rengi bir sıcaklıkla aydınlattığı o kısa pencereyi yakalıyor. Manzara nefes alıyor, nem ve ışıkla canlanıyor gibi görünüyor. 
+
+Condro Puspitosari birkaç hafta boyunca bu tuval üzerinde çalıştı ve buğuyu elle tutulur kılan atmosferik derinliği elde etmek için yağlı boya katmanlarını katmanlar halinde inşa etti. Katmanlı sır tekniği, kurutulmuş katmanlar üzerine ince, yarı saydam renk uygulamaları, başka hiçbir şekilde elde edilemeyecek bir parlaklık yaratır. 
+
+Bu tablo bir yerin fotoğrafı değil. Şafakta dünya yavaş yavaş kendini gösterirken, sessizce durmanın hissi görünür hale getirilmiş bir duygudur.
+Title_de: Morgennebel über dem Tal
+Description_de: Goldenes Licht bricht durch Nebelschleier und enthüllt in einem Moment stiller Offenbarung die üppigen Täler Javas. Die Landschaft atmet.
+LongDescription_de:
+„Morning Mist Over the Valley“ fängt einen flüchtigen Moment im indonesischen Hochland ein, jenen kurzen Zeitfenster, in dem das Licht der Morgendämmerung durch den Morgennebel dringt und die üppigen Täler Javas in goldener Wärme erleuchtet. Die Landschaft scheint zu atmen, voller Feuchtigkeit und Licht. 
+
+Condro Puspitosari arbeitete mehrere Wochen lang an dieser Leinwand und baute Schicht für Schicht Ölfarbe auf, um die atmosphärische Tiefe zu erreichen, die den Nebel greifbar erscheinen lässt. Durch die Technik der Schichtlasuren dünner, lasierender Farbaufträge über getrockneten Schichten entsteht eine Leuchtkraft, die anders nicht zu erreichen ist. 
+
+Dieses Gemälde ist kein Foto eines Ortes. Es ist ein sichtbar gemachtes Gefühl, das Gefühl, still zu stehen, während sich die Welt im Morgengrauen langsam offenbart.
+Title_es: Niebla de la mañana sobre el valle
+Description_es: La luz dorada atraviesa los velos de niebla y revela los exuberantes valles de Java en un momento de tranquila revelación. El paisaje respira.
+LongDescription_es:
+"Morning Mist Over the Valley" captura un momento fugaz en las tierras altas de Indonesia, esa breve ventana en la que la luz del amanecer atraviesa la niebla de la mañana, iluminando los exuberantes valles de Java con una calidez dorada. El paisaje parece respirar, lleno de humedad y luz. 
+
+Condro Puspitosari trabajó en este lienzo durante varias semanas, aplicando capa tras capa de pintura al óleo para lograr la profundidad atmosférica que hace que la niebla parezca tangible. La técnica de esmaltes en capas, aplicaciones finas y translúcidas de color sobre capas secas crea una luminosidad que no se puede lograr de otra manera. 
+
+Esta pintura no es una fotografía de un lugar. Es un sentimiento que se hace visible la sensación de permanecer en silencio mientras el mundo se revela lentamente al amanecer.

@@ -1,0 +1,24 @@
+Title: Untitled
+Artist: Raihan Mohammad
+Category: calligraphy
+Medium: Acrylic on Canvas
+Size: 40 x 60 x 3 cm
+SizeW: 40
+SizeH: 60
+SizeD: 3
+Year: 2026
+Status: available
+Frame: Framed
+ReadyToHang: Yes
+Authenticity: Certificate is Included
+Packaging: 
+Handling: 
+ShipsFrom: Indonesia
+Description: 
+LongDescription:
+
+Title_id: Tanpa judul
+Title_ar: بدون عنوان
+Title_tr: İsimsiz
+Title_de: Ohne Titel
+Title_es: Intitulada

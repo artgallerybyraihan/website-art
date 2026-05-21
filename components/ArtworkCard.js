@@ -6,9 +6,10 @@ import { getPrimaryImage } from "@/lib/utils";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function ArtworkCard({ artwork, index = 0, onClick }) {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const primaryImage = getPrimaryImage(artwork);
   const imageCount = artwork.images?.length || 1;
+  const title = artwork[`title_${lang}`] || artwork.title;
 
   return (
     <motion.article
@@ -28,7 +29,7 @@ export default function ArtworkCard({ artwork, index = 0, onClick }) {
       <div className="artwork-image-container relative bg-cream rounded-sm overflow-hidden">
         <img
           src={primaryImage}
-          alt={`${artwork.title} by ${artwork.artist}, ${artwork.medium}`}
+          alt={`${title} by ${artwork.artist}, ${artwork.medium}`}
           className="w-full h-auto"
           loading="lazy"
         />
@@ -73,7 +74,7 @@ export default function ArtworkCard({ artwork, index = 0, onClick }) {
       <div className="mt-3.5 space-y-0.5 px-0.5">
         <div className="flex items-start justify-between gap-2">
           <h3 className="text-sm font-semibold tracking-wide text-foreground group-hover:text-maroon transition-colors duration-300 leading-snug">
-            {artwork.title}
+            {title}
           </h3>
           {/* Available dot */}
           {artwork.status !== "collected" && (

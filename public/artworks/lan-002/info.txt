@@ -21,3 +21,44 @@ LongDescription:
 The amber palette was carefully mixed to capture the exact quality of light that occurs in the final twenty minutes before sunset a warm, saturating glow that makes everything it touches feel golden and precious. Condro spent many evenings observing this light before committing it to canvas.
 
 This work is for those who understand that a landscape is never just a view it is an experience, a memory, a feeling made visible.
+
+Title_id: Teras di Senja
+Description_id: Saat senja menjelang, sawah kuno berubah menjadi geometri bayangan dan ambar yang mengalir. Meditasi tentang tanah dan waktu.
+LongDescription_id:
+"Teras di Senja" mengubah sawah kuno Indonesia menjadi geometri bayangan dan amber yang mengalir. Saat senja menjelang, yang praktis menjadi puitis, teras-teras menjadi pola abstrak terang dan gelap, sebuah meditasi tentang hubungan antara kerja manusia dan keindahan alam. 
+
+Palet amber dicampur dengan hati-hati untuk menangkap kualitas cahaya yang tepat yang terjadi pada dua puluh menit terakhir sebelum matahari terbenam, cahaya yang hangat dan jenuh yang membuat segala sesuatu yang disentuhnya terasa keemasan dan berharga. Condro menghabiskan banyak malam mengamati cahaya ini sebelum memasukkannya ke kanvas. 
+
+Karya ini diperuntukkan bagi mereka yang memahami bahwa lanskap bukan sekadar pemandangan, melainkan sebuah pengalaman, kenangan, perasaan yang terlihat.
+Title_ar: المدرجات عند الغسق
+Description_ar: مع حلول الشفق، تتحول مصاطب الأرز القديمة إلى أشكال هندسية متتالية من الظل والعنبر. التأمل في الأرض والزمن.
+LongDescription_ar:
+"المدرجات عند الغسق" يحول مصاطب الأرز القديمة في إندونيسيا إلى أشكال هندسية متتالية من الظل والعنبر. مع حلول الشفق، يصبح العملي شاعريًا، وتصبح المدرجات أنماطًا مجردة من الضوء والظلام، تأملًا في العلاقة بين العمل البشري والجمال الطبيعي. 
+
+تم مزج لوحة العنبر بعناية لالتقاط الجودة الدقيقة للضوء الذي يحدث في العشرين دقيقة الأخيرة قبل غروب الشمس، وهو توهج دافئ ومشبع يجعل كل شيء تلمسه يبدو ذهبيًا وثمينًا. أمضى كوندرو العديد من الأمسيات في مراقبة هذا الضوء قبل إلزامه بالقماش. 
+
+هذا العمل مخصص لأولئك الذين يفهمون أن المناظر الطبيعية ليست مجرد منظر، بل هي تجربة، وذكرى، وشعور أصبح مرئيًا.
+Title_tr: Akşam karanlığında teraslar
+Description_tr: Alacakaranlık çöktükçe antik pirinç terasları gölge ve kehribardan oluşan basamaklı geometrilere dönüşüyor. Yer ve zaman üzerine bir meditasyon.
+LongDescription_tr:
+"Alacakaranlıkta Teraslar" Endonezya'nın antik pirinç teraslarını gölge ve kehribardan oluşan basamaklı geometrilere dönüştürüyor. Alacakaranlık çöktükçe pratik şiirsel hale geliyor, teraslar soyut ışık ve karanlık desenlerine dönüşüyor; insan emeği ile doğal güzellik arasındaki ilişki üzerine bir meditasyon. 
+
+Amber paleti, gün batımından önceki son yirmi dakika içinde ortaya çıkan ışığın tam kalitesini yakalamak için dikkatlice karıştırıldı; dokunduğu her şeye altın ve değerli hissettiren sıcak, doygun bir ışıltı. Condro, tuvale koymadan önce bu ışığı gözlemleyerek birçok akşam geçirdi. 
+
+Bu çalışma, manzaranın sadece bir manzara olmadığını, bir deneyim, bir anı, görünür hale getirilmiş bir duygu olduğunu anlayanlar içindir.
+Title_de: Terrassen in der Abenddämmerung
+Description_de: Wenn die Dämmerung hereinbricht, verwandeln sich die alten Reisterrassen in kaskadenartige Geometrien aus Schatten und Bernstein. Eine Meditation über Land und Zeit.
+LongDescription_de:
+„Terraces at Dusk“ verwandelt die alten Reisterrassen Indonesiens in kaskadenartige Geometrien aus Schatten und Bernstein. Wenn die Dämmerung hereinbricht, wird das Praktische poetisch, die Terrassen werden zu abstrakten Mustern aus Hell und Dunkel, eine Meditation über die Beziehung zwischen menschlicher Arbeit und natürlicher Schönheit. 
+
+Die Bernsteinpalette wurde sorgfältig gemischt, um die exakte Qualität des Lichts einzufangen, das in den letzten zwanzig Minuten vor Sonnenuntergang entsteht, ein warmes, sättigendes Leuchten, das alles, was es berührt, golden und kostbar erscheinen lässt. Condro verbrachte viele Abende damit, dieses Licht zu beobachten, bevor er es auf die Leinwand brachte. 
+
+Diese Arbeit richtet sich an diejenigen, die verstehen, dass eine Landschaft nie nur ein Anblick ist, sondern eine Erfahrung, eine Erinnerung, ein sichtbar gemachtes Gefühl.
+Title_es: Terrazas al anochecer
+Description_es: A medida que cae el crepúsculo, las antiguas terrazas de arroz se transforman en geometrías en cascada de sombras y ámbar. Una meditación sobre la tierra y el tiempo.
+LongDescription_es:
+"Terraces at Dusk" transforma las antiguas terrazas de arroz de Indonesia en geometrías en cascada de sombras y ámbar. A medida que cae el crepúsculo, lo práctico se vuelve poético y las terrazas se convierten en patrones abstractos de luz y oscuridad, una meditación sobre la relación entre el trabajo humano y la belleza natural. 
+
+La paleta de ámbar se mezcló cuidadosamente para capturar la calidad exacta de la luz que se produce en los últimos veinte minutos antes del atardecer, un brillo cálido y saturado que hace que todo lo que toca se sienta dorado y precioso. Condro pasó muchas noches observando esta luz antes de plasmarla en el lienzo. 
+
+Este trabajo es para aquellos que entienden que un paisaje nunca es sólo una vista, es una experiencia, un recuerdo, un sentimiento hecho visible.

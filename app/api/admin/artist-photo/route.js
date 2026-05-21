@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { writeFile } from "fs/promises";
 import path from "path";
+import sharp from "sharp";
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "raihan2026";
 
@@ -26,10 +27,16 @@ export async function POST(request) {
 
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
+    
+    // Convert to webp
+    const webpBuffer = await sharp(buffer)
+      .webp({ quality: 80 })
+      .toBuffer();
+
     const artistsDir = path.join(process.cwd(), "public", "artists");
     const filePath = path.join(artistsDir, `${artistKey}.webp`);
 
-    await writeFile(filePath, buffer);
+    await writeFile(filePath, webpBuffer);
 
     return NextResponse.json({
       success: true,

@@ -12,3 +12,44 @@ LongDescription:
 Condro mixed over forty distinct shades of green to achieve the natural variety found in a real forest canopy. The painting rewards close inspection individual leaves, hanging vines, and scattered epiphytes emerge from the overall impression of lush abundance.
 
 This piece brings the forest indoors. It is particularly suited to spaces that seek a connection with nature a living room, a meditation space, a hotel lobby that wants to ground its guests in the beauty of the natural world.
+
+Title_id: Kanopi Zamrud
+Description_id: Sebuah perjalanan mendalam menuju kanopi hutan hujan tropis tempat cahaya tersaring melalui ribuan nuansa hijau, hidup dan bernafas.
+LongDescription_id:
+"Emerald Canopy" mengundang pemirsa untuk melihat ke atas ke dalam kanopi tropis yang lebat di hutan hujan Indonesia, tempat sinar matahari menyaring lapisan dedaunan yang tak terhitung jumlahnya, menciptakan katedral cahaya hijau. Ini adalah karya mendalam yang memenuhi bidang pandang pemirsa dengan kehidupan dan warna. 
+
+Condro memadukan lebih dari empat puluh warna hijau yang berbeda untuk mencapai variasi alami yang ditemukan di kanopi hutan asli. Lukisan itu memberi penghargaan pada pengamatan dekat setiap daun, tanaman merambat yang menggantung, dan epifit yang tersebar muncul dari kesan keseluruhan kelimpahan yang subur. 
+
+Bagian ini membawa hutan ke dalam ruangan. Hal ini sangat cocok untuk ruangan yang mencari koneksi dengan alam, ruang tamu, ruang meditasi, lobi hotel yang ingin membuat para tamunya merasakan keindahan alam.
+Title_ar: مظلة الزمرد
+Description_ar: رحلة غامرة إلى مظلة الغابات الاستوائية المطيرة حيث ينبعث الضوء من خلال آلاف الظلال الخضراء والحيوية والمتنفسة.
+LongDescription_ar:
+يدعو فيلم "Emerald Canopy" المشاهد إلى النظر إلى أعلى في المظلة الاستوائية الكثيفة للغابات المطيرة الإندونيسية، حيث يتسلل ضوء الشمس عبر طبقات لا حصر لها من الأوراق، مما يخلق كاتدرائية من الضوء الأخضر. إنه عمل غامر يملأ مجال رؤية المشاهد بالحياة والألوان. 
+
+قام كوندرو بخلط أكثر من أربعين ظلًا مميزًا من اللون الأخضر لتحقيق التنوع الطبيعي الموجود في مظلة الغابة الحقيقية. تكافئ اللوحة الفحص الدقيق للأوراق الفردية والكروم المعلقة والنباتات الهوائية المتناثرة التي تظهر من الانطباع العام للوفرة الخصبة. 
+
+هذه القطعة تجلب الغابة إلى الداخل. إنها مناسبة بشكل خاص للمساحات التي تسعى إلى التواصل مع الطبيعة، مثل غرفة المعيشة، ومساحة التأمل، وردهة الفندق التي تريد أن تجعل ضيوفها يستمتعون بجمال العالم الطبيعي.
+Title_tr: Zümrüt Kanopi
+Description_tr: Işığın yeşilin binlerce tonunun arasından süzüldüğü, canlı ve nefes aldığı tropik yağmur ormanlarının gölgesine doğru sürükleyici bir yolculuk.
+LongDescription_tr:
+"Zümrüt Kanopi" izleyiciyi, güneş ışığının sayısız yaprak katmanından süzülüp yeşil ışıktan bir katedral oluşturduğu Endonezya yağmur ormanlarının yoğun tropikal örtüsüne doğru yukarıya bakmaya davet ediyor. İzleyicinin görüş alanını hayat ve renkle dolduran sürükleyici bir çalışma. 
+
+Condro, gerçek bir orman gölgesinde bulunan doğal çeşitliliği elde etmek için yeşilin kırk farklı tonunu karıştırdı. Resim, yakından incelendiğinde tek tek yaprakların, asılı asmaların ve dağınık epifitlerin bereketli bolluğun genel izleniminden ortaya çıktığını ödüllendiriyor. 
+
+Bu parça ormanı içeriye getiriyor. Özellikle doğayla bağlantı arayan oturma odası, meditasyon alanı, misafirlerini doğal dünyanın güzelliğine dahil etmek isteyen otel lobisi gibi mekanlara uygundur.
+Title_de: Smaragdgrüner Baldachin
+Description_de: Eine eindringliche Reise in die Baumkronen des tropischen Regenwaldes, wo das Licht durch tausende Grüntöne dringt, lebendig und atmend.
+LongDescription_de:
+„Emerald Canopy“ lädt den Betrachter ein, nach oben in das dichte tropische Blätterdach des indonesischen Regenwaldes zu blicken, wo das Sonnenlicht durch unzählige Blätterschichten dringt und eine Kathedrale aus grünem Licht erzeugt. Es ist ein immersives Werk, das das Sichtfeld des Betrachters mit Leben und Farbe erfüllt. 
+
+Condro mischte über vierzig verschiedene Grüntöne, um die natürliche Vielfalt eines echten Walddaches zu erreichen. Das Gemälde belohnt eine genaue Betrachtung. Einzelne Blätter, hängende Ranken und vereinzelte Epiphyten ergeben einen Gesamteindruck von üppiger Fülle. 
+
+Dieses Stück bringt den Wald nach drinnen. Es eignet sich besonders für Räume, die eine Verbindung zur Natur suchen, z. B. Wohnzimmer, Meditationsräume oder Hotellobbys, die ihre Gäste mit der Schönheit der Natur vertraut machen möchten.
+Title_es: Dosel esmeralda
+Description_es: Un viaje de inmersión al dosel de la selva tropical donde la luz se filtra a través de mil tonos de verde, vivos y respirando.
+LongDescription_es:
+"Emerald Canopy" invita al espectador a mirar hacia arriba, hacia el denso dosel tropical de la selva tropical de Indonesia, donde la luz del sol se filtra a través de innumerables capas de hojas, creando una catedral de luz verde. Es una obra inmersiva que llena de vida y color el campo visual del espectador. 
+
+Condro mezcló más de cuarenta tonos distintos de verde para lograr la variedad natural que se encuentra en el dosel de un bosque real. La pintura recompensa la inspección minuciosa de las hojas individuales, las enredaderas colgantes y las epífitas dispersas que emergen de la impresión general de exuberante abundancia. 
+
+Esta pieza trae el bosque al interior. Es particularmente adecuado para espacios que buscan una conexión con la naturaleza: una sala de estar, un espacio de meditación, el lobby de un hotel que quiere conectar a sus huéspedes con la belleza del mundo natural.

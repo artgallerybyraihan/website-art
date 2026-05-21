@@ -1,6 +1,19 @@
 import { NextResponse } from "next/server";
 import { writeFile, mkdir } from "fs/promises";
 import path from "path";
+import sharp from "sharp";
+import translate from "google-translate-api-x";
+
+async function translateText(text, lang) {
+  if (!text) return "";
+  try {
+    const res = await translate(text, { to: lang });
+    return res.text;
+  } catch (err) {
+    console.error(`Failed to translate to ${lang}:`, err.message);
+    return "";
+  }
+}
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "raihan2026";
 
@@ -67,7 +80,7 @@ export async function POST(request) {
 
       const bytes  = await file.arrayBuffer();
       const buffer = Buffer.from(bytes);
-      const ext    = path.extname(file.name).toLowerCase() || ".webp";
+      const ext    = ".webp"; // Convert all images to WebP
 
       let fileName;
       if (file.name.toLowerCase().includes("mock")) {
@@ -79,7 +92,34 @@ export async function POST(request) {
         fileName = `photo-${i + 1}${ext}`;
       }
 
-      await writeFile(path.join(folderPath, fileName), buffer);
+      // Convert image to WebP using sharp
+      const webpBuffer = await sharp(buffer)
+        .webp({ quality: 80 }) // 80 is a good balance between quality and file size
+        .toBuffer();
+
+      await writeFile(path.join(folderPath, fileName), webpBuffer);
+    }
+
+    // ── Translate content ──────────────────────────────────────────────────────
+    const targetLangs = ['id', 'ar', 'tr', 'de', 'es'];
+    const translatedLines = [];
+    
+    for (const lang of targetLangs) {
+      if (title) {
+        const transTitle = await translateText(title, lang);
+        if (transTitle) translatedLines.push(`Title_${lang}: ${transTitle}`);
+      }
+      if (description) {
+        const transDesc = await translateText(description, lang);
+        if (transDesc) translatedLines.push(`Description_${lang}: ${transDesc}`);
+      }
+      if (longDescription) {
+        const transLong = await translateText(longDescription, lang);
+        if (transLong) {
+          translatedLines.push(`LongDescription_${lang}:`);
+          translatedLines.push(transLong);
+        }
+      }
     }
 
     // ── Write info.txt ─────────────────────────────────────────────────────────
@@ -103,6 +143,7 @@ export async function POST(request) {
       `Description: ${description}`,
       `LongDescription:`,
       longDescription,
+      ...translatedLines
     ].join("\n");
 
     await writeFile(path.join(folderPath, "info.txt"), infoContent, "utf8");

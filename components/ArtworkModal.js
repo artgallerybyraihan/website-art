@@ -16,11 +16,15 @@ export default function ArtworkModal({ artwork, artworks = [], isOpen, onClose }
   const [activeTab, setActiveTab]       = useState("about");
   const touchStartX = useRef(0);
   const touchEndX   = useRef(0);
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   const current       = artworks[currentIndex] || artwork;
   const currentImages = current?.images || [getPrimaryImage(current)];
   const totalImages   = currentImages.length;
+  
+  const title = current ? (current[`title_${lang}`] || current.title) : "";
+  const description = current ? (current[`description_${lang}`] || current.description) : "";
+  const longDescription = current ? (current[`longDescription_${lang}`] || current.longDescription) : "";
 
   useEffect(() => {
     if (artwork && artworks.length > 0) {
@@ -72,7 +76,7 @@ export default function ArtworkModal({ artwork, artworks = [], isOpen, onClose }
 
   if (!current) return null;
 
-  const whatsappLink = getWhatsAppLink(current.title, {
+  const whatsappLink = getWhatsAppLink(title, {
     medium: current.medium, size: current.size, artist: current.artist,
   });
 
@@ -88,10 +92,10 @@ export default function ArtworkModal({ artwork, artworks = [], isOpen, onClose }
   const TabContent = () => {
     if (activeTab === "about") return (
       <div className="space-y-4">
-        {current.longDescription ? (
-          <p className="text-sm text-white/60 leading-[1.8] whitespace-pre-line">{current.longDescription}</p>
-        ) : current.description ? (
-          <p className="text-sm text-white/60 leading-[1.8] italic">&ldquo;{current.description}&rdquo;</p>
+        {longDescription ? (
+          <p className="text-sm text-white/60 leading-[1.8] whitespace-pre-line">{longDescription}</p>
+        ) : description ? (
+          <p className="text-sm text-white/60 leading-[1.8] italic">&ldquo;{description}&rdquo;</p>
         ) : (
           <p className="text-xs text-white/25 italic">{t("modal.noDescription")}</p>
         )}
@@ -213,7 +217,7 @@ export default function ArtworkModal({ artwork, artworks = [], isOpen, onClose }
                       transition={{ duration: 0.28 }}
                       className="relative w-full h-full flex items-center justify-center">
                       <img src={currentImages[imageIndex]}
-                        alt={`${current.title} by ${current.artist}`}
+                        alt={`${title} by ${current.artist}`}
                         className={`max-w-full max-h-[50dvh] lg:max-h-[80dvh] object-contain rounded-sm ${current.status === "collected" ? "opacity-85" : ""}`}
                         style={{ boxShadow: "0 24px 60px -12px rgba(0,0,0,0.7)" }}
                       />
@@ -252,7 +256,7 @@ export default function ArtworkModal({ artwork, artworks = [], isOpen, onClose }
                   <div className="shrink-0 space-y-2 pb-3 border-b border-white/8">
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex-1 min-w-0">
-                        <h2 className="text-lg sm:text-xl font-bold text-white leading-tight tracking-tight">{current.title}</h2>
+                        <h2 className="text-lg sm:text-xl font-bold text-white leading-tight tracking-tight">{title}</h2>
                         <p className="text-sm text-white/45 mt-1 font-medium">{current.artist}</p>
                       </div>
                       <div className="shrink-0 flex items-center gap-1.5 mt-1">

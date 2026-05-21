@@ -29,3 +29,83 @@ LongDescription:
 “Dia telah menciptakan manusia dari segumpal darah.”
 
 Manusia bukan hanya dicipta, namun ia juga diperintah dan dilarang. Untuk menjelaskan perintah dan larangan ini diutuslah Rasul dan diturunkanlah Al Kitab (Al Qur’an). Oleh karena itu, setelah menceritakan perintah untuk membaca disebutkan mengenai penciptaan manusia.
+Title_id: membacanya
+Description_id: Nadi ini adalah yang pertama turun pada Rasulullah, semoga Tuhan memberkatinya dan memberinya kedamaian. Surat tersebut diturunkan pada awal masa kenabian. Saat itu dia belum bisa menulis dan belum paham tentang keimanan. Kemudian Jibril datang membawa pamflet atau wahyu. Kemudian Jibril memerintahkan nabi untuk membacanya. Beliau -sallallahu 'alaihi wa sallam- menolaknya. Dia berkata,
+LongDescription_id:
+مَا أَنَا بِقَارِئٍ
+
+"Saya tidak bisa membaca." (HR.Bukhari no.3). Dia terus mengatakan itu sampai akhirnya dia membacanya. Lalu turunlah ayat itu,
+
+اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ
+
+“Bacalah dengan (menyebut) nama Tuhanmu Yang menciptakan”. Yang dimaksud mencipta di sini adalah mencipta makhluk secara umum. Namun yang dimaksud khusus di sini adalah manusia. Manusia diciptakan dari segumpal darah sebagaimana disebutkan dalam ayat berikutnya,
+
+خَلَقَ الْإِنْسَانَ مِنْ عَلَقٍ
+
+“Dia menciptakan manusia dari segumpal darah.” 
+
+Manusia tidak hanya diciptakan, tetapi ia juga diperintah dan dilarang. Untuk menjelaskan perintah dan larangan tersebut, diutuslah Rasulullah dan diturunkannya Al Kitab (Al Qur'an). Oleh karena itu, setelah meriwayatkan perintah membaca disebutkan tentang penciptaan manusia.
+Title_ar: قراءتها
+Description_ar: وكان هذا الوريد أول من نزل على الرسول صلى الله عليه وسلم. نزلت الرسالة في أول النبوة. في ذلك الوقت لم يكن يعرف الكتابة ولم يفهم الإيمان. ثم جاء جبريل بالنشرة أو الوحي. ثم أمر جبريل النبي بقراءته. فرفض -صلى الله عليه وسلم-. قال،
+LongDescription_ar:
+مَا أَنَا بِقَارِئٍ
+
+"لا أستطيع القراءة." (HR. البخاري رقم 3). وظل يقول ذلك حتى قرأه أخيرًا. ثم نزلت الآية
+
+اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ
+
+"اقرأ باسم ربك الذي خلق". والمراد بالخلق هنا هو خلق المخلوقات على العموم. لكن المقصود هنا بالتحديد هو البشر. لقد خلق الإنسان من علقة كما جاء في الآية التالية:
+
+خَلَقَ الْإِنْسَانَ مِنْ عَلَقٍ
+
+«و خلق الإنسان من علقة». 
+
+فالإنسان ليس مخلوقا فحسب، بل هو محكوم ومحرم أيضا. ولبيان هذه الأوامر والنواهي أُرسل الرسول ونزل الكتاب. ولذلك بعد رواية الأمر بالقراءة جاء ذكر خلق الإنسان.
+Title_tr: oku
+Description_tr: Bu damar, Resûlullah (s.a.v.)'e inen ilk damar oldu. Allah onu bereketlesin ve ona selamet versin. Mektup peygamberliğin başlangıcında nazil olmuştur. O zamanlar yazmayı bilmiyordu ve imandan anlamıyordu. Sonra Cibril bir risale veya vahiy ile geldi. Daha sonra Cebrail peygambere onu okumasını emretti. O -sallallahu aleyhi ve sellem- reddetti. Dedi ki:
+LongDescription_tr:
+مَا أَنَا بِقَارِئٍ
+
+"Okuyamıyorum." (HR. Buhari no. 3). Sonunda okuyana kadar bunu söylemeye devam etti. Daha sonra şu ayet indi:
+
+اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ
+
+"Yaratan Rabbinin adını anarak oku." Burada yaratmaktan kastedilen, genel olarak yaratıkları yaratmaktır. Ancak burada özellikle kastedilen insandır. Bir sonraki ayette de belirtildiği gibi insan, kan pıhtısından yaratılmıştır.
+
+خَلَقَ الْإِنْسَانَ مِنْ عَلَقٍ
+
+"O, insanı bir kan pıhtısından yarattı." 
+
+İnsan sadece yaratılmamıştır, aynı zamanda yönetilmekte ve yasaklanmaktadır. Bu emir ve yasakları açıklamak için Elçi gönderilmiş ve Kitab (Kur'an) indirilmiştir. Bu nedenle okuma emri anlatıldıktan sonra insanın yaratılışından bahsedilir.
+Title_de: lies es
+Description_de: Diese Ader war die erste, die sich auf den Gesandten niederschlug, möge Gott ihn segnen und ihm Frieden schenken. Der Brief wurde zu Beginn des Prophetentums offenbart. Zu dieser Zeit konnte er nicht schreiben und hatte keine Ahnung vom Glauben. Dann kam Jibril mit einer Broschüre oder Offenbarung. Dann befahl Gabriel dem Propheten, es zu lesen. Er – möge Allah ihn in Ehren halten und ihm Wohlergehen schenken – lehnte ab. Er sagte:
+LongDescription_de:
+مَا أَنَا بِقَارِئٍ
+
+„Ich kann nicht lesen.“ (HR. Bukhari Nr. 3). Das sagte er so lange, bis er es endlich las. Dann kam der Vers herunter:
+
+اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ
+
+„Lies mit (Erwähnung) des Namens deines Herrn, der erschaffen hat.“ Mit Erschaffen ist hier die Erschaffung von Geschöpfen im Allgemeinen gemeint. Konkret gemeint ist hier aber der Mensch. Der Mensch wurde aus einem Blutgerinnsel erschaffen, wie im nächsten Vers erwähnt:
+
+خَلَقَ الْإِنْسَانَ مِنْ عَلَقٍ
+
+„Er hat den Menschen aus einem Blutklumpen erschaffen.“ 
+
+Der Mensch ist nicht nur erschaffen, er wird auch beherrscht und verboten. Um diese Gebote und Verbote zu erklären, wurde der Gesandte geschickt und Al Kitab (Al Qur'an) offenbart. Daher wird nach dem Erzählen des Gebots zum Lesen von der Erschaffung des Menschen gesprochen.
+Title_es: léelo
+Description_es: Esta vena fue la primera en descender sobre el Mensajero, que Dios lo bendiga y le conceda paz. La carta fue revelada al comienzo de la profecía. En ese momento no sabía escribir y no entendía sobre la fe. Entonces llegó Jibril con un panfleto o una revelación. Entonces Gabriel ordenó al profeta que lo leyera. Él -sallallahu 'alaihi wa sallam- se negó. Él dijo,
+LongDescription_es:
+مَا أَنَا بِقَارِئٍ
+
+"No puedo leer." (HR. Bujari n. 3). Siguió diciendo eso hasta que finalmente lo leyó. Luego bajó el verso,
+
+اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ
+
+"Lee con (mencionando) el nombre de tu Señor Quien creó". Lo que aquí se entiende por crear es crear criaturas en general. Pero lo que aquí se refiere específicamente es a los seres humanos. El hombre fue creado a partir de un coágulo de sangre como se menciona en el siguiente versículo,
+
+خَلَقَ الْإِنْسَانَ مِنْ عَلَقٍ
+
+"Él ha creado al hombre a partir de un coágulo de sangre". 
+
+El hombre no sólo es creado, sino que también es gobernado y prohibido. Para explicar estos mandatos y prohibiciones, se envió al Mensajero y se reveló Al Kitab (Al Corán). Por eso, después de narrar el mandamiento de leer se menciona sobre la creación del hombre.
