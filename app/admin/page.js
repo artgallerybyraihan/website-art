@@ -2,6 +2,7 @@
 import { useState, useRef } from "react";
 import Image from "next/image";
 import AdminArtworkManager from "@/components/AdminArtworkManager";
+import InsightsDashboard from "@/components/InsightsDashboard";
 
 // ── Options ─────────────────────────────────────────────────────────────────
 const MEDIUM_OPTIONS    = ["Acrylic on Canvas", "Oil on Canvas"];
@@ -70,6 +71,7 @@ export default function AdminPage() {
   const [authed, setAuthed]     = useState(false);
   const [password, setPassword] = useState("");
   const [pwError, setPwError]   = useState("");
+  const [adminTab, setAdminTab] = useState("upload"); // "upload" | "manage" | "insights"
 
   // artwork form
   const [files, setFiles]     = useState([]);
@@ -190,9 +192,34 @@ export default function AdminPage() {
         </button>
       </div>
 
+      {/* Tab Navigation */}
+      <div className="bg-white border-b border-[#E8E0D6] px-6">
+        <div className="max-w-4xl mx-auto flex items-center gap-0">
+          {[
+            { key: "upload", label: "Upload Karya", icon: "⬆️" },
+            { key: "manage", label: "Kelola Karya", icon: "⚙️" },
+            { key: "insights", label: "Insights", icon: "📊" },
+          ].map(tab => (
+            <button
+              key={tab.key}
+              onClick={() => setAdminTab(tab.key)}
+              className={`flex items-center gap-1.5 px-5 py-3.5 text-[11px] font-bold tracking-[0.12em] uppercase border-b-2 transition-all ${
+                adminTab === tab.key
+                  ? "border-[#6B1C2A] text-[#6B1C2A]"
+                  : "border-transparent text-[#9C9588] hover:text-[#1A1A1A]"
+              }`}
+            >
+              <span>{tab.icon}</span>
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10 space-y-10">
 
-        {/* ── SECTION: Foto Artis ─────────────────────────────────────────── */}
+        {/* ── TAB: Upload ─────────────────────────────────────────────────── */}
+        {adminTab === "upload" && <>
         <div>
           <h2 className="text-lg font-bold text-[#1A1A1A] mb-1">Foto Profil Artis</h2>
           <p className="text-sm text-[#9C9588] mb-5">Ganti foto Raihan atau Ibu Condro yang tampil di website.</p>
@@ -387,11 +414,20 @@ export default function AdminPage() {
             <p className="text-[10px] text-[#9C9588]/50 text-center pb-8">File disimpan otomatis di folder public/artworks dan langsung tampil di gallery</p>
           </form>
         </div>
+        </>}
 
-        {/* ── SECTION: Kelola Karya ──────────────────────────────────────── */}
-        <div className="border-t border-[#E8E0D6] pt-10">
-          <AdminArtworkManager password={password} />
-        </div>
+        {/* ── TAB: Manage ─────────────────────────────────────────────────── */}
+        {adminTab === "manage" && (
+          <div className="border-t border-[#E8E0D6] pt-10">
+            <AdminArtworkManager password={password} />
+          </div>
+        )}
+
+        {/* ── TAB: Insights ───────────────────────────────────────────────── */}
+        {adminTab === "insights" && (
+          <InsightsDashboard />
+        )}
+
       </div>
     </div>
   );

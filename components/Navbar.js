@@ -13,6 +13,7 @@ export default function Navbar() {
   const langRef = useRef(null);
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const isPackaging = pathname === "/packaging";
   const useLight = isHome && !isScrolled;
   const { t, lang, setLang, isRTL } = useLanguage();
 
@@ -39,6 +40,7 @@ export default function Navbar() {
     { href: "/", label: t("nav.home") },
     { href: "/products", label: t("nav.collection") },
     { href: "/artist", label: t("nav.artists") },
+    { href: "/packaging", label: t("nav.packaging") },
     { href: "/contact", label: t("nav.contact") },
   ];
 
@@ -48,13 +50,13 @@ export default function Navbar() {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
+          isScrolled || isPackaging
             ? "bg-[#FAFAF8]/90 backdrop-blur-xl border-b border-black/[0.04] shadow-[0_4px_24px_-8px_rgba(0,0,0,0.08)]"
             : "bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-16 md:h-20">
 
             {/* Logo */}
             <Link href="/" className="group focus:outline-none" id="nav-logo">
@@ -174,7 +176,7 @@ export default function Navbar() {
 
               {/* Burger */}
               <button
-                className="relative w-10 h-10 flex flex-col items-center justify-center gap-[5px] rounded-full"
+                className="relative w-8 h-8 flex flex-col items-center justify-center gap-[5px] rounded-full"
                 onClick={() => setIsMobileOpen(!isMobileOpen)}
                 id="mobile-menu-toggle"
                 aria-label="Toggle menu"

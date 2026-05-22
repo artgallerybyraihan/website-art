@@ -43,6 +43,12 @@ export default function ProductsClient({ artworks }) {
       return 0;
     });
 
+    // Always put collected artworks at the bottom
+    result = [
+      ...result.filter(a => a.status !== "collected"),
+      ...result.filter(a => a.status === "collected"),
+    ];
+
     return result;
   }, [artworks, activeCategory, statusFilter, sortBy]);
 
@@ -57,7 +63,7 @@ export default function ProductsClient({ artworks }) {
   return (
     <>
       {/* ── Header ── */}
-      <section className="pt-36 pb-16 px-6 relative overflow-hidden">
+      <section className="pt-28 pb-10 px-6 relative overflow-hidden">
         {/* Subtle background */}
         <div className="absolute inset-0 bg-gradient-to-b from-cream/40 to-transparent" />
 
@@ -90,7 +96,7 @@ export default function ProductsClient({ artworks }) {
       </section>
 
       {/* ── Filters ── */}
-      <section className="px-4 sm:px-6 pb-10 relative z-40 sticky top-20 bg-background/90 backdrop-blur-xl border-b border-warm-gray/8">
+      <section className="px-4 sm:px-6 pb-10 relative z-40 sticky top-16 md:top-20 bg-background/90 backdrop-blur-xl border-b border-warm-gray/8">
         <div className="max-w-7xl mx-auto py-4">
           <div className="flex flex-col items-center gap-4 sm:gap-5 sm:flex-row sm:justify-between">
 

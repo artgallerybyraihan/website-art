@@ -109,3 +109,13 @@ LongDescription_es:
 "Él ha creado al hombre a partir de un coágulo de sangre". 
 
 El hombre no sólo es creado, sino que también es gobernado y prohibido. Para explicar estos mandatos y prohibiciones, se envió al Mensajero y se reveló Al Kitab (Al Corán). Por eso, después de narrar el mandamiento de leer se menciona sobre la creación del hombre.
+Title_en: Read
+Description_en: This verse was the first to descend upon the Messenger, may God bless him and grant him peace. The letter was revealed at the beginning of prophethood. At that time he could not write and did not understand about faith. Then Gabriel came bringing a revelation. Then Gabriel ordered the prophet to read it. He -sallallahu 'alaihi wa sallam- refused. He said,
+LongDescription_en:
+"I cannot read." (HR. Bukhari no. 3). He kept saying that until he finally read it. Then the verse came down,
+
+"Read with (mentioning) the name of your Lord Who created". What is meant by creating here is creating creatures in general. But what is specifically meant here is humans. Man was created from a blood clot as mentioned in the next verse,
+
+"He created man from a blood clot."
+
+Man is not only created, but he is also governed and prohibited. To explain these commands and prohibitions, the Messenger was sent and Al Kitab (Al Qur'an) was revealed. Therefore, after narrating the command to read, it is mentioned about the creation of man.

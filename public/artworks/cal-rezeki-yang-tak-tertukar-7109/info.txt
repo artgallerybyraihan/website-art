@@ -37,3 +37,7 @@ Title_es: Fortuna irremplazable
 Description_es: Este trabajo está inspirado en QS. Hud: 6, "Wa maa min daabbatin fil-ardhi illaa 'alallaahi rizquhaa" una afirmación de que no hay una sola criatura en la tierra sin que Allah haya garantizado su sustento.
 LongDescription_es:
 La caligrafía que brilla sobre un fondo oscuro se convierte en una metáfora de la certeza en medio de la incertidumbre de la vida, de las raciones que se han medido antes de dar el primer paso. En cada capa de textura y sombra, se da a entender el mensaje de que el sustento no es algo que deba perseguirse con miedo, sino creerlo con calma porque lo que se ha determinado nunca será confuso, nunca llegará tarde y nunca estará mal encaminado.
+Title_en: Unswapped Fortune
+Description_en: This artwork is inspired by QS. Hud: 6, "And there is no creature on earth but that upon Allah is its provision," an affirmation that there is no single creature on earth whose sustenance is not guaranteed by Allah.
+LongDescription_en:
+Calligraphy standing bright against a dark background becomes a metaphor for certainty amidst the uncertainty of life, about a portion that has been measured before the first step is taken. In every layer of texture and shadow, there is an implied message that fortune is not something to be pursued with fear, but believed in with tranquility because what has been decreed will never be swapped, will never be late, and will never go to the wrong address.

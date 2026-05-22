@@ -70,6 +70,7 @@ export default function Footer() {
                 { href: "/", label: t("nav.home") },
                 { href: "/products", label: t("nav.collection") },
                 { href: "/artist", label: t("nav.artists") },
+                { href: "/packaging", label: t("nav.packaging") },
                 { href: "/contact", label: t("nav.contact") },
               ].map((link) => (
                 <Link

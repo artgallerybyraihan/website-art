@@ -190,17 +190,17 @@ export default function ArtworkModal({ artwork, artworks = [], isOpen, onClose }
                 variants={{ enter: d => ({ x: d > 0 ? 60 : -60, opacity: 0 }), center: { x: 0, opacity: 1 }, exit: d => ({ x: d > 0 ? -60 : 60, opacity: 0 }) }}
                 initial="enter" animate="center" exit="exit"
                 transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="w-full max-w-5xl flex flex-col lg:flex-row gap-4 lg:gap-6 overflow-y-auto lg:overflow-y-visible max-h-[92dvh] lg:max-h-[90dvh] pt-14 pb-6 lg:pt-0 lg:pb-0"
+                className="w-full max-w-5xl flex flex-col lg:flex-row gap-0 lg:gap-6 overflow-y-auto lg:overflow-y-visible max-h-[100dvh] lg:max-h-[90dvh] pt-12 lg:pt-0"
               >
-                {/* Thumbnail strip */}
+                {/* Thumbnail strip - horizontal on mobile (below image), vertical on desktop (left side) */}
                 {totalImages > 1 && (
-                  <div className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-y-auto shrink-0 order-2 lg:order-1 lg:max-h-[80dvh] pb-1 lg:pb-0">
+                  <div className="flex lg:flex-col gap-1.5 overflow-x-auto lg:overflow-y-auto shrink-0 order-2 lg:order-1 lg:max-h-[80dvh] px-4 py-2 lg:px-0 lg:py-0">
                     {currentImages.map((img, idx) => (
                       <button key={idx} onClick={() => setImageIndex(idx)}
                         className={`relative shrink-0 rounded-sm overflow-hidden border-2 transition-all ${idx === imageIndex ? "border-maroon opacity-100" : "border-white/10 opacity-40 hover:opacity-70"}`}
-                        style={{ width: 60, height: 60 }}
+                        style={{ width: 48, height: 48 }}
                         aria-label={`Photo ${idx + 1}`}>
-                        <Image src={img} alt={`View ${idx + 1}`} fill sizes="60px" className="object-cover" />
+                        <Image src={img} alt={`View ${idx + 1}`} fill sizes="48px" className="object-cover" />
                       </button>
                     ))}
                   </div>
@@ -208,7 +208,7 @@ export default function ArtworkModal({ artwork, artworks = [], isOpen, onClose }
 
                 {/* Main image */}
                 <div
-                  className="flex-1 relative flex items-center justify-center order-1 lg:order-2 min-h-[40dvh] lg:min-h-0 lg:max-h-[80dvh]"
+                  className="flex-1 relative flex items-center justify-center order-1 lg:order-2 min-h-[45vw] lg:min-h-0 lg:max-h-[80dvh] px-4 lg:px-0 pt-2 lg:pt-0"
                   onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}
                 >
                   <AnimatePresence mode="wait">
@@ -218,12 +218,12 @@ export default function ArtworkModal({ artwork, artworks = [], isOpen, onClose }
                       className="relative w-full h-full flex items-center justify-center">
                       <img src={currentImages[imageIndex]}
                         alt={`${title} by ${current.artist}`}
-                        className={`max-w-full max-h-[50dvh] lg:max-h-[80dvh] object-contain rounded-sm ${current.status === "collected" ? "opacity-85" : ""}`}
+                        className={`max-w-full max-h-[45dvh] lg:max-h-[80dvh] object-contain rounded-sm ${current.status === "collected" ? "opacity-85" : ""}`}
                         style={{ boxShadow: "0 24px 60px -12px rgba(0,0,0,0.7)" }}
                       />
                       {current.status === "collected" && (
-                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                          <span className="text-white font-medium tracking-[0.35em] uppercase text-xs border border-white/30 px-6 py-2.5 bg-black/60 backdrop-blur-sm rounded-sm">{t("modal.collected")}</span>
+                        <div className="absolute bottom-3 right-3 pointer-events-none">
+                          <span className="text-white font-medium tracking-[0.2em] uppercase text-[9px] border border-white/30 px-3 py-1.5 bg-black/70 backdrop-blur-sm rounded-sm">{t("modal.collected")}</span>
                         </div>
                       )}
                       {totalImages > 1 && (
@@ -239,19 +239,19 @@ export default function ArtworkModal({ artwork, artworks = [], isOpen, onClose }
                   {totalImages > 1 && (
                     <>
                       <button onClick={() => setImageIndex(p => Math.max(0, p-1))} disabled={imageIndex === 0}
-                        className={`absolute left-1 top-1/2 -translate-y-1/2 w-8 h-8 hidden lg:flex items-center justify-center rounded-full bg-black/30 text-white/60 hover:text-white hover:bg-black/50 transition-all ${imageIndex === 0 ? "opacity-0 pointer-events-none" : ""}`}>
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7"/></svg>
+                        className={`absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 hidden lg:flex items-center justify-center rounded-full bg-black/30 text-white/60 hover:text-white hover:bg-black/50 transition-all ${imageIndex === 0 ? "opacity-0 pointer-events-none" : ""}`}>
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7"/></svg>
                       </button>
                       <button onClick={() => setImageIndex(p => Math.min(totalImages-1, p+1))} disabled={imageIndex === totalImages-1}
-                        className={`absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 hidden lg:flex items-center justify-center rounded-full bg-black/30 text-white/60 hover:text-white hover:bg-black/50 transition-all ${imageIndex === totalImages-1 ? "opacity-0 pointer-events-none" : ""}`}>
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/></svg>
+                        className={`absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 hidden lg:flex items-center justify-center rounded-full bg-black/30 text-white/60 hover:text-white hover:bg-black/50 transition-all ${imageIndex === totalImages-1 ? "opacity-0 pointer-events-none" : ""}`}>
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/></svg>
                       </button>
                     </>
                   )}
                 </div>
 
-                {/* ── Details Panel (right) ──────────────────────────────── */}
-                <div className="order-3 lg:w-[300px] shrink-0 flex flex-col lg:max-h-[80dvh]">
+                {/* ── Details Panel (right / bottom on mobile) ─────── */}
+                <div className="order-3 lg:w-[300px] shrink-0 flex flex-col lg:max-h-[80dvh] px-4 pb-6 lg:px-0 lg:pb-0">
                   {/* Title + Status (fixed top) */}
                   <div className="shrink-0 space-y-2 pb-3 border-b border-white/8">
                     <div className="flex items-start justify-between gap-3">

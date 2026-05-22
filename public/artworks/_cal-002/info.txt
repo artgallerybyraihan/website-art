@@ -19,3 +19,5 @@ Description: Artinya:
 
 LongDescription:
 Dalam karya ini, Surah Al-Insyirah ditampilkan secara utuh dengan penekanan pada ayat فَإِذَا فَرَغْتَ فَانصَبْ • وَإِلَىٰ رَبِّكَ فَارْغَبْ sebagai inti pesan. Bagian ini sengaja dimunculkan lebih dominan untuk menegaskan makna kesinambungan antara usaha dan penghambaan, sebagaimana dijelaskan Ibnu Katsir bahwa setelah seseorang menyelesaikan urusan dunianya, ia diperintahkan untuk bersungguh-sungguh dalam ibadah serta memurnikan harapan hanya kepada Allah.
+Title_en: To Your Lord You Hope
+Description_en: Meaning:

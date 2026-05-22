@@ -17,3 +17,6 @@ ShipsFrom: Indonesia
 Description: Lukisan ini menangkap deretan perahu nelayan yang sedang bersandar di tepian sungai yang tenang, dilihat dari sudut pandang ketinggian.
 LongDescription:
 Lukisan ini menangkap deretan perahu nelayan yang sedang bersandar di tepian sungai yang tenang, dilihat dari sudut pandang ketinggian. Tekstur cat yang tebal dan kontras warna antara perahu-perahu tradisional dengan rimbunnya pepohonan hijau di latar belakang menciptakan kesan kehidupan pesisir yang dinamis. Dari atas jembatan, keriuhan peralatan melaut yang tumpah ruah di atas dek dan air sungai yang sedikit keruh menjadi potret jujur tentang keseharian para pencari nafkah di perairan.
+
+Title_en: From the Bridge
+Description_en: This painting captures a row of fishing boats resting on the calm riverbanks, viewed from an elevated perspective.

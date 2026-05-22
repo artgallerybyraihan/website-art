@@ -62,3 +62,11 @@ LongDescription_es:
 Condro Puspitosari trabajó en este lienzo durante varias semanas, aplicando capa tras capa de pintura al óleo para lograr la profundidad atmosférica que hace que la niebla parezca tangible. La técnica de esmaltes en capas, aplicaciones finas y translúcidas de color sobre capas secas crea una luminosidad que no se puede lograr de otra manera. 
 
 Esta pintura no es una fotografía de un lugar. Es un sentimiento que se hace visible la sensación de permanecer en silencio mientras el mundo se revela lentamente al amanecer.
+Title_en: The Charm of the White Crater Mist
+Description_en: Through textured and richly detailed brushstrokes, this painting captures the magical moment when thick mist blankets the stairs leading to the White Crater.
+LongDescription_en:
+The bright color accents of the visitors' umbrellas provide a touch of life amidst nature's melancholy. The thick paint texture on the wet-looking steps gives a real sensory impression, as if inviting us to feel the cold and damp air creeping between the trees of the mountain forest.
+
+Condro Puspitosari worked on this canvas over several weeks, building layer upon layer of oil paint to achieve the atmospheric depth that makes the mist feel tangible. The technique of layered glazes thin, translucent applications of color over dried layers creates a luminosity that cannot be achieved any other way.
+
+This painting is not a photograph of a place. It is a feeling made visible the sensation of standing in silence as the world slowly reveals itself at dawn.

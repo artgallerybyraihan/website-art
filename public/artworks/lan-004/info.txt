@@ -53,3 +53,11 @@ LongDescription_es:
 Condro mezcló más de cuarenta tonos distintos de verde para lograr la variedad natural que se encuentra en el dosel de un bosque real. La pintura recompensa la inspección minuciosa de las hojas individuales, las enredaderas colgantes y las epífitas dispersas que emergen de la impresión general de exuberante abundancia. 
 
 Esta pieza trae el bosque al interior. Es particularmente adecuado para espacios que buscan una conexión con la naturaleza: una sala de estar, un espacio de meditación, el lobby de un hotel que quiere conectar a sus huéspedes con la belleza del mundo natural.
+Title_en: Emerald Canopy
+Description_en: An immersive journey into the tropical rainforest canopy where light filters through a thousand shades of green, alive and breathing.
+LongDescription_en:
+"Emerald Canopy" invites the viewer to look upward into the dense tropical canopy of the Indonesian rainforest, where sunlight filters through countless layers of leaves, creating a cathedral of green light. It is an immersive work that fills the viewer's field of vision with life and color.
+
+Condro mixed over forty distinct shades of green to achieve the natural variety found in a real forest canopy. The painting rewards close inspection individual leaves, hanging vines, and scattered epiphytes emerge from the overall impression of lush abundance.
+
+This piece brings the forest indoors. It is particularly suited to spaces that seek a connection with nature a living room, a meditation space, a hotel lobby that wants to ground its guests in the beauty of the natural world.

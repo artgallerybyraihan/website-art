@@ -4,12 +4,19 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { getPrimaryImage } from "@/lib/utils";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { trackEvent } from "@/lib/analytics";
 
 export default function ArtworkCard({ artwork, index = 0, onClick }) {
   const { t, lang } = useLanguage();
   const primaryImage = getPrimaryImage(artwork);
   const imageCount = artwork.images?.length || 1;
   const title = artwork[`title_${lang}`] || artwork.title;
+
+  const handleClick = () => {
+    trackEvent("artwork_click", { artworkId: artwork.id, title });
+    onClick?.(artwork);
+  };
+
 
   return (
     <motion.article
@@ -22,7 +29,7 @@ export default function ArtworkCard({ artwork, index = 0, onClick }) {
         ease: [0.25, 0.46, 0.45, 0.94],
       }}
       className="group cursor-pointer card-hover-glow"
-      onClick={() => onClick?.(artwork)}
+      onClick={handleClick}
       id={`artwork-card-${artwork.id}`}
     >
       {/* Image Container */}

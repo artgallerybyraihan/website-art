@@ -24,3 +24,9 @@ Title_ar: بدون عنوان
 Title_tr: İsimsiz
 Title_de: Ohne Titel
 Title_es: Intitulada
+Title_en: A Pause Behind the Calm
+Description_en: There is a different kind of tranquility when viewing this painting. Condro successfully captures a moment where nature seems to pause, allowing yellow lotus flowers to emerge amidst the dark water surface.
+LongDescription_en:
+The choice of dark colors dominating the canvas is not to drown the object, but to provide space for the yellow of the flowers and the green of the leaves to appear more alive. The thick brushstroke technique (impasto) provides real texture; you can almost feel the physical form of every petal and water ripple.
+
+This painting does not try to be grand or dramatic. Instead, it feels honest. For me, this artwork is a reminder that beauty is often found in quiet moments, in inconspicuous places, and in calm simplicity.

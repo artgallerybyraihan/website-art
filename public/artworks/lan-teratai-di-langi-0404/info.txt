@@ -37,3 +37,7 @@ Title_es: loto en el cielo
 Description_es: Esta pintura representa la paz de un estanque lleno de plantas de loto.
 LongDescription_es:
 Con trazos de color suaves pero texturizados, se puede ver una combinación de hojas verdes y acentos florales rosados ​​que se extienden naturalmente sobre la superficie del agua. El color azul claro que domina el fondo da la impresión de agua clara y una atmósfera luminosa de mañana. Su sencilla composición da una sensación de calma a quien la ve, como si estuviera al borde de una piscina mientras disfruta de la suave brisa.
+Title_en: Lotus in Langi
+Description_en: This painting depicts the peacefulness of a pond filled with lotus plants.
+LongDescription_en:
+With soft yet textured color strokes, there is a blend of leafy green and pink flower accents naturally scattered on the water's surface. The light blue color dominating the background gives the impression of clear water and a bright morning atmosphere. Its simple composition provides a calm feeling for anyone who sees it, as if standing by the pond while enjoying a gentle breeze.
