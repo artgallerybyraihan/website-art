@@ -29,7 +29,11 @@ export async function POST(request, { params }) {
       const existingFiles = fs.readdirSync(folderPath)
         .filter((f) => /\.(jpe?g|png|webp)$/i.test(f));
       for (const file of existingFiles) {
-        fs.unlinkSync(path.join(folderPath, file));
+        try {
+          fs.unlinkSync(path.join(folderPath, file));
+        } catch (unlinkErr) {
+          console.warn(`Failed to delete ${file}:`, unlinkErr.message);
+        }
       }
     }
 
@@ -42,9 +46,10 @@ export async function POST(request, { params }) {
 
       const bytes = await file.arrayBuffer();
       const buffer = Buffer.from(bytes);
-      const ext = path.extname(file.name).toLowerCase() || ".webp";
 
       let fileName;
+      const ext = ".webp";
+
       if (file.name.toLowerCase().includes("mock")) {
         fileName = `mock up${ext}`;
       } else if (i === 0 && replaceAll) {
@@ -53,8 +58,25 @@ export async function POST(request, { params }) {
         fileName = `photo-${Date.now()}-${i + 1}${ext}`;
       }
 
-      await writeFile(path.join(folderPath, fileName), buffer);
+      // Convert to WebP safely
+      try {
+        const sharp = (await import("sharp")).default;
+        const webpBuffer = await sharp(buffer)
+          .webp({ quality: 80 })
+          .toBuffer();
+        await writeFile(path.join(folderPath, fileName), webpBuffer);
+      } catch (sharpErr) {
+        // Fallback: save original format
+        console.warn("Sharp conversion failed, saving original:", sharpErr.message);
+        const fallbackExt = path.extname(file.name).toLowerCase() || ".jpg";
+        const fallbackName = fileName.replace(".webp", fallbackExt);
+        await writeFile(path.join(folderPath, fallbackName), buffer);
+      }
       savedCount++;
+    }
+
+    if (savedCount === 0) {
+      return NextResponse.json({ error: "Tidak ada file valid untuk diupload." }, { status: 400 });
     }
 
     return NextResponse.json({

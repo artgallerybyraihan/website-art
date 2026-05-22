@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
-import { writeFile } from "fs/promises";
+import { writeFile, mkdir } from "fs/promises";
 import path from "path";
-import sharp from "sharp";
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "raihan2026";
 
@@ -27,21 +26,34 @@ export async function POST(request) {
 
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-    
-    // Convert to webp
-    const webpBuffer = await sharp(buffer)
-      .webp({ quality: 80 })
-      .toBuffer();
 
+    // Ensure artists directory exists
     const artistsDir = path.join(process.cwd(), "public", "artists");
-    const filePath = path.join(artistsDir, `${artistKey}.webp`);
+    await mkdir(artistsDir, { recursive: true });
 
-    await writeFile(filePath, webpBuffer);
+    // Convert to webp safely
+    let finalBuffer = buffer;
+    let fileName = `${artistKey}.webp`;
+
+    try {
+      const sharp = (await import("sharp")).default;
+      finalBuffer = await sharp(buffer)
+        .webp({ quality: 80 })
+        .toBuffer();
+    } catch (sharpErr) {
+      // Fallback: save original format if sharp fails
+      console.warn("Sharp conversion failed, saving original:", sharpErr.message);
+      const ext = path.extname(file.name).toLowerCase() || ".jpg";
+      fileName = `${artistKey}${ext}`;
+    }
+
+    const filePath = path.join(artistsDir, fileName);
+    await writeFile(filePath, finalBuffer);
 
     return NextResponse.json({
       success: true,
       message: `Foto ${artistKey} berhasil diperbarui!`,
-      path: `/artists/${artistKey}.webp`,
+      path: `/artists/${fileName}`,
     });
   } catch (err) {
     console.error("Artist photo upload error:", err);

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 export default function AdminArtworkManager({ password }) {
   const [artworks, setArtworks] = useState([]);
@@ -15,18 +15,26 @@ export default function AdminArtworkManager({ password }) {
   const [actionLoading, setActionLoading] = useState(false);
   const imgRef = useRef(null);
 
-  const fetchArtworks = async () => {
+  const fetchArtworks = useCallback(async () => {
     setLoading(true);
     try {
       const res = await fetch(`/api/admin/artworks?password=${encodeURIComponent(password)}`);
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({ error: `HTTP ${res.status}` }));
+        showMsg({ error: data.error || `Error ${res.status}` });
+        return;
+      }
       const data = await res.json();
       if (data.artworks) setArtworks(data.artworks);
       else if (data.error) showMsg({ error: data.error });
-    } catch { showMsg({ error: "Gagal memuat data." }); }
-    finally { setLoading(false); }
-  };
+    } catch (err) {
+      showMsg({ error: "Gagal memuat data: " + (err.message || "Koneksi gagal") });
+    } finally {
+      setLoading(false);
+    }
+  }, [password]);
 
-  useEffect(() => { fetchArtworks(); }, []);
+  useEffect(() => { fetchArtworks(); }, [fetchArtworks]);
 
   const showMsg = (m) => { setMsg(m); setTimeout(() => setMsg(null), 5000); };
 
@@ -39,7 +47,30 @@ export default function AdminArtworkManager({ password }) {
 
   const closeDetail = () => { setSelected(null); setEditMode(false); setEditData(null); setDeleteConfirm(false); };
 
-  const startEdit = () => { setEditData({...selected}); setEditMode(true); };
+  const startEdit = () => {
+    // Ensure all editable fields have safe default values
+    setEditData({
+      ...selected,
+      title: selected.title || "",
+      category: selected.category || "calligraphy",
+      status: selected.status || "available",
+      artist: selected.artist || "Raihan Mohammad",
+      medium: selected.medium || "Acrylic on Canvas",
+      sizeW: selected.sizeW || "",
+      sizeH: selected.sizeH || "",
+      sizeD: selected.sizeD || "",
+      year: selected.year || new Date().getFullYear(),
+      description: selected.description || "",
+      longDescription: selected.longDescription || "",
+      frame: selected.frame || "Not Framed",
+      readyToHang: selected.readyToHang || "No",
+      authenticity: selected.authenticity || "Certificate is Included",
+      packaging: selected.packaging || "",
+      handling: selected.handling || "",
+      shipsFrom: selected.shipsFrom || "Indonesia",
+    });
+    setEditMode(true);
+  };
 
   const handleEdit = async () => {
     setActionLoading(true);
@@ -52,9 +83,12 @@ export default function AdminArtworkManager({ password }) {
       });
       const data = await res.json();
       if (data.success) { showMsg({ success: data.message }); closeDetail(); fetchArtworks(); }
-      else showMsg({ error: data.error });
-    } catch { showMsg({ error: "Gagal menyimpan." }); }
-    finally { setActionLoading(false); }
+      else showMsg({ error: data.error || "Gagal menyimpan." });
+    } catch (err) {
+      showMsg({ error: "Gagal menyimpan: " + (err.message || "Koneksi gagal") });
+    } finally {
+      setActionLoading(false);
+    }
   };
 
   const handleDelete = async () => {
@@ -63,9 +97,12 @@ export default function AdminArtworkManager({ password }) {
       const res = await fetch(`/api/admin/artworks/${encodeURIComponent(selected.id)}?password=${encodeURIComponent(password)}`, { method: "DELETE" });
       const data = await res.json();
       if (data.success) { showMsg({ success: data.message }); closeDetail(); fetchArtworks(); }
-      else showMsg({ error: data.error });
-    } catch { showMsg({ error: "Gagal menghapus." }); }
-    finally { setActionLoading(false); }
+      else showMsg({ error: data.error || "Gagal menghapus." });
+    } catch (err) {
+      showMsg({ error: "Gagal menghapus: " + (err.message || "Koneksi gagal") });
+    } finally {
+      setActionLoading(false);
+    }
   };
 
   const handleToggleDraft = async () => {
@@ -76,9 +113,12 @@ export default function AdminArtworkManager({ password }) {
       });
       const data = await res.json();
       if (data.success) { showMsg({ success: data.message }); closeDetail(); fetchArtworks(); }
-      else showMsg({ error: data.error });
-    } catch { showMsg({ error: "Gagal mengubah visibilitas." }); }
-    finally { setActionLoading(false); }
+      else showMsg({ error: data.error || "Gagal mengubah visibilitas." });
+    } catch (err) {
+      showMsg({ error: "Gagal mengubah visibilitas: " + (err.message || "Koneksi gagal") });
+    } finally {
+      setActionLoading(false);
+    }
   };
 
   const handleStatusToggle = async () => {
@@ -91,9 +131,12 @@ export default function AdminArtworkManager({ password }) {
       });
       const data = await res.json();
       if (data.success) { showMsg({ success: `Status → ${newStatus}` }); closeDetail(); fetchArtworks(); }
-      else showMsg({ error: data.error });
-    } catch { showMsg({ error: "Gagal mengubah status." }); }
-    finally { setActionLoading(false); }
+      else showMsg({ error: data.error || "Gagal mengubah status." });
+    } catch (err) {
+      showMsg({ error: "Gagal mengubah status: " + (err.message || "Koneksi gagal") });
+    } finally {
+      setActionLoading(false);
+    }
   };
 
   const handleImgReplace = async () => {
@@ -108,13 +151,16 @@ export default function AdminArtworkManager({ password }) {
       const res = await fetch(`/api/admin/artworks/${encodeURIComponent(selected.id)}/images`, { method: "POST", body: fd });
       const data = await res.json();
       if (data.success) { showMsg({ success: data.message }); closeDetail(); fetchArtworks(); }
-      else showMsg({ error: data.error });
-    } catch { showMsg({ error: "Gagal upload." }); }
-    finally { setActionLoading(false); }
+      else showMsg({ error: data.error || "Gagal upload." });
+    } catch (err) {
+      showMsg({ error: "Gagal upload: " + (err.message || "Koneksi gagal") });
+    } finally {
+      setActionLoading(false);
+    }
   };
 
   const filtered = artworks.filter(a => {
-    if (search && !a.title.toLowerCase().includes(search.toLowerCase())) return false;
+    if (search && !(a.title || "").toLowerCase().includes(search.toLowerCase())) return false;
     if (filterCat !== "all" && a.category !== filterCat) return false;
     if (filterStatus === "draft" && !a.isDraft) return false;
     if (filterStatus === "available" && (a.status !== "available" || a.isDraft)) return false;
@@ -154,7 +200,7 @@ export default function AdminArtworkManager({ password }) {
       {/* Grid — cards are clickable */}
       {loading ? (
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-          {[1,2,3].map(i => <div key={i} className="aspect-square shimmer-loading rounded-sm" />)}
+          {[1,2,3].map(i => <div key={i} className="aspect-square bg-[#E8E0D6] animate-pulse rounded-sm" />)}
         </div>
       ) : filtered.length === 0 ? (
         <div className="text-center py-16 text-[#9C9588]"><p className="text-sm">Tidak ada karya ditemukan.</p></div>
@@ -165,7 +211,7 @@ export default function AdminArtworkManager({ password }) {
               className={`text-left bg-white rounded-sm border overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1 cursor-pointer group ${art.isDraft?"border-amber-300 opacity-70":"border-[#E8E0D6]"}`}>
               <div className="relative aspect-square bg-[#F5F0EB] overflow-hidden">
                 {art.images?.[0] ? (
-                  <img src={art.images[0]} alt={art.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <img src={art.images[0]} alt={art.title || "Artwork"} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 ) : (
                   <div className="flex items-center justify-center h-full text-[#9C9588]/30">
                     <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
@@ -181,8 +227,8 @@ export default function AdminArtworkManager({ password }) {
                 </div>
               </div>
               <div className="p-2.5">
-                <h4 className="text-xs font-semibold text-[#1A1A1A] truncate">{art.title}</h4>
-                <p className="text-[10px] text-[#9C9588] mt-0.5 truncate">{art.artist} · {art.year}</p>
+                <h4 className="text-xs font-semibold text-[#1A1A1A] truncate">{art.title || "Untitled"}</h4>
+                <p className="text-[10px] text-[#9C9588] mt-0.5 truncate">{art.artist || "Unknown"} · {art.year || "-"}</p>
               </div>
             </button>
           ))}
@@ -195,17 +241,17 @@ export default function AdminArtworkManager({ password }) {
           <div className="bg-white rounded-sm max-w-md w-full overflow-hidden shadow-2xl" onClick={e => e.stopPropagation()}>
             {/* Image preview */}
             <div className="relative aspect-[4/3] bg-[#F5F0EB]">
-              {selected.images?.[0] && <img src={selected.images[0]} alt={selected.title} className="w-full h-full object-cover" />}
+              {selected.images?.[0] && <img src={selected.images[0]} alt={selected.title || "Artwork"} className="w-full h-full object-cover" />}
               <button onClick={closeDetail} className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors text-sm">✕</button>
               <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                <h3 className="text-lg font-bold text-white">{selected.title}</h3>
-                <p className="text-xs text-white/60 mt-0.5">{selected.artist} · {selected.year} · {selected.medium}</p>
+                <h3 className="text-lg font-bold text-white">{selected.title || "Untitled"}</h3>
+                <p className="text-xs text-white/60 mt-0.5">{selected.artist || "Unknown"} · {selected.year || "-"} · {selected.medium || "-"}</p>
               </div>
             </div>
             {/* Info & quick badges */}
             <div className="p-4 border-b border-[#E8E0D6]">
               <div className="flex gap-2 flex-wrap">
-                <span className={`px-2 py-1 text-[9px] font-bold uppercase rounded-sm ${selected.category==="calligraphy"?"bg-[#6B1C2A]/10 text-[#6B1C2A]":"bg-[#1A1A1A]/10 text-[#1A1A1A]"}`}>{selected.category}</span>
+                <span className={`px-2 py-1 text-[9px] font-bold uppercase rounded-sm ${selected.category==="calligraphy"?"bg-[#6B1C2A]/10 text-[#6B1C2A]":"bg-[#1A1A1A]/10 text-[#1A1A1A]"}`}>{selected.category || "unknown"}</span>
                 <span className={`px-2 py-1 text-[9px] font-bold uppercase rounded-sm ${selected.status==="collected"?"bg-emerald-100 text-emerald-700":"bg-blue-50 text-blue-600"}`}>{selected.status==="collected"?"Collected / Sold":"Available"}</span>
                 {selected.isDraft && <span className="px-2 py-1 text-[9px] font-bold uppercase rounded-sm bg-amber-100 text-amber-700">Tersembunyi (Draft)</span>}
                 {selected.size && <span className="px-2 py-1 text-[9px] font-medium rounded-sm bg-[#F5F0EB] text-[#9C9588]">{selected.size}</span>}
@@ -243,7 +289,7 @@ export default function AdminArtworkManager({ password }) {
                 </button>
               ) : (
                 <div className="border border-red-300 rounded-sm p-3 bg-red-50 space-y-2">
-                  <p className="text-xs text-red-700 font-medium">Yakin hapus "{selected.title}"? Ini tidak bisa dibatalkan.</p>
+                  <p className="text-xs text-red-700 font-medium">Yakin hapus &quot;{selected.title || "karya ini"}&quot;? Ini tidak bisa dibatalkan.</p>
                   <div className="flex gap-2">
                     <button onClick={() => setDeleteConfirm(false)} className="flex-1 py-2 text-[10px] font-semibold border border-[#E8E0D6] rounded-sm hover:bg-white transition-colors">Batal</button>
                     <button onClick={handleDelete} disabled={actionLoading} className="flex-1 py-2 text-[10px] font-semibold bg-red-600 text-white rounded-sm hover:bg-red-700 transition-colors">{actionLoading ? "Menghapus..." : "Ya, Hapus!"}</button>
@@ -260,27 +306,27 @@ export default function AdminArtworkManager({ password }) {
         <div className="fixed inset-0 z-[60] flex items-start justify-center bg-black/60 px-4 py-6 overflow-y-auto" onClick={() => { setEditMode(false); setEditData(null); }}>
           <div className="bg-white rounded-sm max-w-lg w-full my-4 shadow-2xl" onClick={e => e.stopPropagation()}>
             <div className="p-5 border-b border-[#E8E0D6] flex items-center justify-between">
-              <h3 className="text-base font-bold text-[#1A1A1A]">Edit — {selected.title}</h3>
+              <h3 className="text-base font-bold text-[#1A1A1A]">Edit — {selected.title || "Karya"}</h3>
               <button onClick={() => { setEditMode(false); setEditData(null); }} className="text-[#9C9588] hover:text-[#1A1A1A] text-lg">✕</button>
             </div>
             <div className="p-5 space-y-3 max-h-[70vh] overflow-y-auto">
-              <div><label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium block mb-1">Judul</label><input value={editData.title} onChange={e=>ef("title",e.target.value)} className="w-full px-3 py-2 text-sm border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A]" /></div>
+              <div><label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium block mb-1">Judul</label><input value={editData.title || ""} onChange={e=>ef("title",e.target.value)} className="w-full px-3 py-2 text-sm border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A]" /></div>
               <div className="grid grid-cols-2 gap-3">
-                <div><label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium block mb-1">Kategori</label><select value={editData.category} onChange={e=>ef("category",e.target.value)} className="w-full px-3 py-2 text-sm border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A]"><option value="calligraphy">Calligraphy</option><option value="landscape">Landscape</option></select></div>
-                <div><label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium block mb-1">Status</label><select value={editData.status} onChange={e=>ef("status",e.target.value)} className="w-full px-3 py-2 text-sm border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A]"><option value="available">Available</option><option value="collected">Collected</option></select></div>
+                <div><label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium block mb-1">Kategori</label><select value={editData.category || "calligraphy"} onChange={e=>ef("category",e.target.value)} className="w-full px-3 py-2 text-sm border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A]"><option value="calligraphy">Calligraphy</option><option value="landscape">Landscape</option></select></div>
+                <div><label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium block mb-1">Status</label><select value={editData.status || "available"} onChange={e=>ef("status",e.target.value)} className="w-full px-3 py-2 text-sm border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A]"><option value="available">Available</option><option value="collected">Collected</option></select></div>
               </div>
               <div className="grid grid-cols-2 gap-3">
-                <div><label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium block mb-1">Seniman</label><select value={editData.artist} onChange={e=>ef("artist",e.target.value)} className="w-full px-3 py-2 text-sm border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A]"><option>Raihan Mohammad</option><option>Condro Puspitosari</option></select></div>
-                <div><label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium block mb-1">Medium</label><select value={editData.medium} onChange={e=>ef("medium",e.target.value)} className="w-full px-3 py-2 text-sm border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A]"><option>Acrylic on Canvas</option><option>Oil on Canvas</option></select></div>
+                <div><label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium block mb-1">Seniman</label><select value={editData.artist || "Raihan Mohammad"} onChange={e=>ef("artist",e.target.value)} className="w-full px-3 py-2 text-sm border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A]"><option>Raihan Mohammad</option><option>Condro Puspitosari</option></select></div>
+                <div><label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium block mb-1">Medium</label><select value={editData.medium || "Acrylic on Canvas"} onChange={e=>ef("medium",e.target.value)} className="w-full px-3 py-2 text-sm border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A]"><option>Acrylic on Canvas</option><option>Oil on Canvas</option></select></div>
               </div>
               <div className="grid grid-cols-3 gap-3">
-                <div><label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium block mb-1">W (cm)</label><input value={editData.sizeW} onChange={e=>ef("sizeW",e.target.value)} className="w-full px-3 py-2 text-sm border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A]" /></div>
-                <div><label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium block mb-1">H (cm)</label><input value={editData.sizeH} onChange={e=>ef("sizeH",e.target.value)} className="w-full px-3 py-2 text-sm border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A]" /></div>
-                <div><label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium block mb-1">D (cm)</label><input value={editData.sizeD} onChange={e=>ef("sizeD",e.target.value)} className="w-full px-3 py-2 text-sm border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A]" /></div>
+                <div><label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium block mb-1">W (cm)</label><input value={editData.sizeW || ""} onChange={e=>ef("sizeW",e.target.value)} className="w-full px-3 py-2 text-sm border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A]" /></div>
+                <div><label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium block mb-1">H (cm)</label><input value={editData.sizeH || ""} onChange={e=>ef("sizeH",e.target.value)} className="w-full px-3 py-2 text-sm border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A]" /></div>
+                <div><label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium block mb-1">D (cm)</label><input value={editData.sizeD || ""} onChange={e=>ef("sizeD",e.target.value)} className="w-full px-3 py-2 text-sm border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A]" /></div>
               </div>
-              <div><label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium block mb-1">Tahun</label><input type="number" value={editData.year} onChange={e=>ef("year",e.target.value)} className="w-full px-3 py-2 text-sm border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A]" /></div>
-              <div><label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium block mb-1">Deskripsi Singkat</label><textarea value={editData.description} onChange={e=>ef("description",e.target.value)} rows={2} className="w-full px-3 py-2 text-sm border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A] resize-none" /></div>
-              <div><label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium block mb-1">Deskripsi Panjang</label><textarea value={editData.longDescription} onChange={e=>ef("longDescription",e.target.value)} rows={4} className="w-full px-3 py-2 text-sm border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A] resize-none" /></div>
+              <div><label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium block mb-1">Tahun</label><input type="number" value={editData.year || ""} onChange={e=>ef("year",e.target.value)} className="w-full px-3 py-2 text-sm border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A]" /></div>
+              <div><label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium block mb-1">Deskripsi Singkat</label><textarea value={editData.description || ""} onChange={e=>ef("description",e.target.value)} rows={2} className="w-full px-3 py-2 text-sm border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A] resize-none" /></div>
+              <div><label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium block mb-1">Deskripsi Panjang</label><textarea value={editData.longDescription || ""} onChange={e=>ef("longDescription",e.target.value)} rows={4} className="w-full px-3 py-2 text-sm border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A] resize-none" /></div>
             </div>
             <div className="p-5 border-t border-[#E8E0D6] flex gap-2">
               <button onClick={() => { setEditMode(false); setEditData(null); }} className="flex-1 py-2.5 text-xs font-semibold border border-[#E8E0D6] rounded-sm hover:bg-[#F5F0EB] transition-colors">Batal</button>

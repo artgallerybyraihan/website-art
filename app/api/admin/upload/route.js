@@ -1,21 +1,21 @@
 import { NextResponse } from "next/server";
 import { writeFile, mkdir } from "fs/promises";
 import path from "path";
-import sharp from "sharp";
-import translate from "google-translate-api-x";
 
-async function translateText(text, lang) {
-  if (!text) return "";
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "raihan2026";
+
+// Safe translate — never throws, returns "" on failure
+async function safeTranslate(text, lang) {
+  if (!text || !text.trim()) return "";
   try {
+    const { default: translate } = await import("google-translate-api-x");
     const res = await translate(text, { to: lang });
-    return res.text;
+    return res.text || "";
   } catch (err) {
-    console.error(`Failed to translate to ${lang}:`, err.message);
+    console.warn(`Translation to ${lang} failed (non-fatal):`, err.message);
     return "";
   }
 }
-
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "raihan2026";
 
 export async function POST(request) {
   try {
@@ -39,7 +39,6 @@ export async function POST(request) {
     const sizeW       = formData.get("sizeW")?.trim()       || "";
     const sizeH       = formData.get("sizeH")?.trim()       || "";
     const sizeD       = formData.get("sizeD")?.trim()       || "";
-    // Build combined size string: "100 x 150 cm" or with depth
     const sizeParts   = [sizeW, sizeH, sizeD].filter(Boolean);
     const size        = sizeParts.length >= 2 ? sizeParts.join(" x ") + " cm" : "";
 
@@ -73,6 +72,7 @@ export async function POST(request) {
     // ── Save image files ───────────────────────────────────────────────────────
     const files = formData.getAll("files");
     let mainSaved = false;
+    let savedCount = 0;
 
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
@@ -80,7 +80,7 @@ export async function POST(request) {
 
       const bytes  = await file.arrayBuffer();
       const buffer = Buffer.from(bytes);
-      const ext    = ".webp"; // Convert all images to WebP
+      const ext    = ".webp";
 
       let fileName;
       if (file.name.toLowerCase().includes("mock")) {
@@ -92,34 +92,54 @@ export async function POST(request) {
         fileName = `photo-${i + 1}${ext}`;
       }
 
-      // Convert image to WebP using sharp
-      const webpBuffer = await sharp(buffer)
-        .webp({ quality: 80 }) // 80 is a good balance between quality and file size
-        .toBuffer();
-
-      await writeFile(path.join(folderPath, fileName), webpBuffer);
+      // Convert to WebP safely
+      try {
+        const sharp = (await import("sharp")).default;
+        const webpBuffer = await sharp(buffer)
+          .webp({ quality: 80 })
+          .toBuffer();
+        await writeFile(path.join(folderPath, fileName), webpBuffer);
+      } catch (sharpErr) {
+        // Fallback: save original buffer if sharp fails
+        console.warn("Sharp conversion failed, saving original:", sharpErr.message);
+        const fallbackName = fileName.replace(".webp", path.extname(file.name).toLowerCase() || ".jpg");
+        await writeFile(path.join(folderPath, fallbackName), buffer);
+      }
+      savedCount++;
     }
 
-    // ── Translate content ──────────────────────────────────────────────────────
+    if (savedCount === 0) {
+      // Clean up empty folder
+      const { rmdir } = await import("fs/promises");
+      try { await rmdir(folderPath); } catch (_) {}
+      return NextResponse.json({ error: "Tidak ada foto yang valid untuk disimpan." }, { status: 400 });
+    }
+
+    // ── Translate content (non-blocking, failures are OK) ─────────────────────
     const targetLangs = ['id', 'ar', 'tr', 'de', 'es'];
     const translatedLines = [];
-    
-    for (const lang of targetLangs) {
-      if (title) {
-        const transTitle = await translateText(title, lang);
-        if (transTitle) translatedLines.push(`Title_${lang}: ${transTitle}`);
-      }
-      if (description) {
-        const transDesc = await translateText(description, lang);
-        if (transDesc) translatedLines.push(`Description_${lang}: ${transDesc}`);
-      }
-      if (longDescription) {
-        const transLong = await translateText(longDescription, lang);
-        if (transLong) {
-          translatedLines.push(`LongDescription_${lang}:`);
-          translatedLines.push(transLong);
+
+    try {
+      for (const lang of targetLangs) {
+        if (title) {
+          const transTitle = await safeTranslate(title, lang);
+          if (transTitle) translatedLines.push(`Title_${lang}: ${transTitle}`);
+        }
+        if (description) {
+          const transDesc = await safeTranslate(description, lang);
+          if (transDesc) translatedLines.push(`Description_${lang}: ${transDesc}`);
+        }
+        if (longDescription) {
+          const transLong = await safeTranslate(longDescription, lang);
+          if (transLong) {
+            translatedLines.push(`LongDescription_${lang}:`);
+            translatedLines.push(transLong);
+          }
         }
       }
+    } catch (translateErr) {
+      // Translation entirely failed — that's OK, just skip
+      console.warn("Translation batch failed (non-fatal):", translateErr.message);
     }
 
     // ── Write info.txt ─────────────────────────────────────────────────────────
@@ -151,7 +171,7 @@ export async function POST(request) {
     return NextResponse.json({
       success: true,
       id: folderId,
-      message: `Karya berhasil disimpan di folder: ${folderId}`,
+      message: `Karya "${title}" berhasil disimpan (${savedCount} foto).`,
     });
   } catch (err) {
     console.error("Admin upload error:", err);

@@ -5,6 +5,36 @@ import { getArtworkFolderPath, buildInfoTxt } from "@/lib/data";
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "raihan2026";
 
+// ── Helper: read existing translations from info.txt ──────────────────────────
+function readExistingTranslations(folderPath) {
+  const infoPath = path.join(folderPath, "info.txt");
+  if (!fs.existsSync(infoPath)) return [];
+
+  const raw = fs.readFileSync(infoPath, "utf8");
+  const lines = raw.split(/\r?\n/);
+  const translationLines = [];
+  let capturing = false;
+
+  for (const line of lines) {
+    const keyMatch = line.match(/^([A-Za-z_]+):\s*(.*)/);
+    if (keyMatch) {
+      const key = keyMatch[1];
+      // Check if it's a translated field
+      if (/^(Title|Description|LongDescription)_(id|ar|tr|de|es)$/.test(key)) {
+        translationLines.push(line);
+        capturing = key.startsWith("LongDescription_");
+      } else {
+        capturing = false;
+      }
+    } else if (capturing) {
+      // Multi-line continuation for LongDescription translations
+      translationLines.push(line);
+    }
+  }
+
+  return translationLines;
+}
+
 // ── PUT: Update artwork info ──────────────────────────────────────────────────
 export async function PUT(request, { params }) {
   try {
@@ -20,8 +50,15 @@ export async function PUT(request, { params }) {
       return NextResponse.json({ error: "Karya tidak ditemukan." }, { status: 404 });
     }
 
-    // Build and write info.txt
-    const infoContent = buildInfoTxt(body);
+    // Preserve existing translations
+    const existingTranslations = readExistingTranslations(folderPath);
+
+    // Build and write info.txt (with translations appended)
+    let infoContent = buildInfoTxt(body);
+    if (existingTranslations.length > 0) {
+      infoContent += "\n" + existingTranslations.join("\n");
+    }
+
     fs.writeFileSync(path.join(folderPath, "info.txt"), infoContent, "utf8");
 
     return NextResponse.json({
@@ -89,14 +126,21 @@ export async function PATCH(request, { params }) {
     let newId;
 
     if (isDraft) {
-      // Remove _ prefix to make visible
       newId = id.slice(1);
     } else {
-      // Add _ prefix to hide
       newId = `_${id}`;
     }
 
     const newFolderPath = path.join(artworksDir, newId);
+
+    // Check if destination already exists
+    if (fs.existsSync(newFolderPath)) {
+      return NextResponse.json(
+        { error: `Folder "${newId}" sudah ada. Rename manual diperlukan.` },
+        { status: 409 }
+      );
+    }
+
     fs.renameSync(folderPath, newFolderPath);
 
     return NextResponse.json({

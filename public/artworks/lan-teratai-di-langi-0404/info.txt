@@ -1,0 +1,39 @@
+Title: Teratai Di Langi
+Artist: Condro Puspitosari
+Category: landscape
+Medium: Oil on Canvas
+Size: 70 x 90 x 4 cm
+SizeW: 70
+SizeH: 90
+SizeD: 4
+Year: 2025
+Status: collected
+Frame: Framed
+ReadyToHang: Yes
+Authenticity: Certificate is Included
+Packaging: fremed
+Handling: wood packaging
+ShipsFrom: Indonesia
+Description: Lukisan ini menggambarkan kedamaian sebuah kolam yang dipenuhi tanaman teratai.
+LongDescription:
+Dengan sapuan warna yang lembut namun bertekstur, terlihat perpaduan warna hijau daun dan aksen merah muda bunga yang tersebar alami di atas permukaan air. Warna biru muda yang mendominasi latar belakang memberikan kesan air yang jernih dan suasana pagi yang cerah. Komposisinya yang sederhana memberikan perasaan tenang bagi siapa pun yang melihatnya, seolah sedang berdiri di tepi kolam sambil menikmati hembusan angin yang pelan.
+Title_id: Teratai Di Langit
+Description_id: Lukisan ini menggambarkan kedamaian sebuah kolam yang dipenuhi tanaman teratai.
+LongDescription_id:
+Dengan sapuan warna yang lembut namun bertekstur, terlihat perpaduan warna hijau daun dan aksen merah muda bunga yang tersebar alami di atas permukaan air. Warna biru muda yang mendominasi latar belakang memberikan kesan air yang jernih dan suasana pagi yang cerah. Komposisinya yang sederhana memberikan perasaan tenang bagi siapa pun yang melihatnya, seolah sedang berdiri di tepi kolam sambil menikmati hembusan angin yang pelan.
+Title_ar: لوتس في السماء
+Description_ar: تصور هذه اللوحة هدوء بركة مليئة بنباتات اللوتس.
+LongDescription_ar:
+من خلال ضربات الألوان الناعمة والمزخرفة، يمكنك رؤية مزيج من الأوراق الخضراء ولمسات الأزهار الوردية المنتشرة بشكل طبيعي على سطح الماء. اللون الأزرق الفاتح الذي يهيمن على الخلفية يعطي انطباعًا بوجود مياه صافية وأجواء صباحية مشرقة. تركيبته البسيطة تعطي شعوراً بالهدوء لكل من يراها، كما لو كان واقفاً على حافة حوض السباحة بينما يستمتع بالنسيم اللطيف.
+Title_tr: Gökyüzündeki Lotus
+Description_tr: Bu resim nilüfer bitkileriyle dolu bir göletin huzurunu tasvir ediyor.
+LongDescription_tr:
+Yumuşak ama dokulu renk vuruşlarıyla, su yüzeyine doğal bir şekilde yayılan yeşil yapraklar ve pembe çiçek vurgularının birleşimini görebilirsiniz. Arka plana hakim olan açık mavi renk, berrak su ve aydınlık bir sabah atmosferi izlenimi veriyor. Basit kompozisyonu, onu gören herkese, sanki bir havuzun kenarında durup hafif esintinin tadını çıkarıyormuş gibi sakin bir his veriyor.
+Title_de: Lotus im Himmel
+Description_de: Dieses Gemälde zeigt die Ruhe eines Teiches voller Lotuspflanzen.
+LongDescription_de:
+Mit sanften, aber strukturierten Farbstrichen können Sie eine Kombination aus grünen Blättern und rosa Blumenakzenten sehen, die sich auf natürliche Weise auf der Wasseroberfläche verteilen. Die im Hintergrund dominierende hellblaue Farbe vermittelt den Eindruck von klarem Wasser und einer hellen Morgenstimmung. Seine schlichte Zusammensetzung vermittelt jedem, der es sieht, ein ruhiges Gefühl, als ob er am Rand eines Pools stünde und die sanfte Brise genießen würde.
+Title_es: loto en el cielo
+Description_es: Esta pintura representa la paz de un estanque lleno de plantas de loto.
+LongDescription_es:
+Con trazos de color suaves pero texturizados, se puede ver una combinación de hojas verdes y acentos florales rosados ​​que se extienden naturalmente sobre la superficie del agua. El color azul claro que domina el fondo da la impresión de agua clara y una atmósfera luminosa de mañana. Su sencilla composición da una sensación de calma a quien la ve, como si estuviera al borde de una piscina mientras disfruta de la suave brisa.

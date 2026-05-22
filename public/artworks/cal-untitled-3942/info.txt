@@ -1,7 +1,7 @@
-Title: Untitled
-Artist: Raihan Mohammad
-Category: calligraphy
-Medium: Acrylic on Canvas
+Title: Jeda di Balik Tenang
+Artist: Condro Puspitosari
+Category: landscape
+Medium: Oil on Canvas
 Size: 40 x 60 x 3 cm
 SizeW: 40
 SizeH: 60
@@ -14,9 +14,11 @@ Authenticity: Certificate is Included
 Packaging: 
 Handling: 
 ShipsFrom: Indonesia
-Description: 
+Description: Ada ketenangan yang berbeda saat melihat lukisan ini. Condro berhasil menangkap momen di mana alam tampak berhenti sejenak, membiarkan bunga-bunga teratai kuning mencuat di antara permukaan air yang gelap.
 LongDescription:
+Pilihan warna gelap yang mendominasi kanvas bukan untuk menenggelamkan objek, melainkan untuk memberi ruang agar warna kuning bunga dan hijau daun tampak lebih hidup. Teknik sapuan kuas yang tebal (impasto) memberikan tekstur nyata, anda hampir bisa merasakan wujud fisik dari setiap kelopak dan riak airnya.
 
+Lukisan ini tidak mencoba untuk menjadi megah atau dramatis. Ia justru terasa jujur. Bagi saya, karya ini adalah pengingat bahwa keindahan sering kali ditemukan di momen-momen sunyi, di tempat yang tidak mencolok, dan dalam kesederhanaan yang tenang.
 Title_id: Tanpa judul
 Title_ar: بدون عنوان
 Title_tr: İsimsiz
