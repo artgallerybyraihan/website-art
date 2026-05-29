@@ -93,6 +93,29 @@ export async function POST(request) {
         data.exitPages[page] = (data.exitPages[page] || 0) + 1;
       }
 
+      // ── Visitor onboarding data ──────────────────────────────────────
+      if (type === "visitor_onboarding") {
+        if (!data.visitorInsights) {
+          data.visitorInsights = {
+            intents: {}, collections: {}, countries: {}, cities: {},
+            roles: {}, ageRanges: {}, totalOnboarded: 0, submissions: [],
+          };
+        }
+        const vi = data.visitorInsights;
+        const p = payload;
+
+        if (p.intent) vi.intents[p.intent] = (vi.intents[p.intent] || 0) + 1;
+        if (p.collection) vi.collections[p.collection] = (vi.collections[p.collection] || 0) + 1;
+        if (p.country) vi.countries[p.country] = (vi.countries[p.country] || 0) + 1;
+        if (p.city) vi.cities[p.city] = (vi.cities[p.city] || 0) + 1;
+        if (p.role) vi.roles[p.role] = (vi.roles[p.role] || 0) + 1;
+        if (p.ageRange) vi.ageRanges[p.ageRange] = (vi.ageRanges[p.ageRange] || 0) + 1;
+        vi.totalOnboarded += 1;
+
+        vi.submissions.unshift({ ...p, ts: now });
+        if (vi.submissions.length > 200) vi.submissions = vi.submissions.slice(0, 200);
+      }
+
       data.events.unshift({ type, payload, ts: now });
       if (data.events.length > 200) data.events = data.events.slice(0, 200);
 

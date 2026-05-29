@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 
 // Country code → flag emoji
 function countryFlag(code) {
@@ -64,6 +64,35 @@ function RankRow({ rank, label, value, max, color }) {
   );
 }
 
+// Simple horizontal bar chart component (pure CSS, no dependencies)
+function BarChart({ entries, color, maxItems = 6 }) {
+  if (!entries || entries.length === 0) return null;
+  const items = entries.slice(0, maxItems);
+  const maxVal = items[0]?.[1] || 1;
+
+  return (
+    <div className="space-y-2.5 mt-3">
+      {items.map(([label, count]) => {
+        const pct = Math.max(4, Math.round((count / maxVal) * 100));
+        return (
+          <div key={label}>
+            <div className="flex items-center justify-between mb-1">
+              <span className="text-[11px] text-[#1A1A1A] truncate">{label}</span>
+              <span className="text-[11px] font-bold text-[#1A1A1A] ml-2 shrink-0">{count}</span>
+            </div>
+            <div className="h-2 bg-[#F0EBE3] rounded-full overflow-hidden">
+              <div
+                className="h-full rounded-full transition-all duration-700"
+                style={{ width: `${pct}%`, background: color }}
+              />
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 function avgSeconds(arr) {
   if (!arr || arr.length === 0) return 0;
   return Math.round(arr.reduce((a, b) => a + b, 0) / arr.length);
@@ -83,11 +112,26 @@ const PAGE_LABELS = {
 };
 function pageLabel(p) { return PAGE_LABELS[p] || p; }
 
+// Helper: aggregate array of objects by a key
+function aggregate(arr, key) {
+  const map = {};
+  arr.forEach((item) => {
+    const val = item[key];
+    if (!val) return;
+    map[val] = (map[val] || 0) + 1;
+  });
+  return Object.entries(map).sort((a, b) => b[1] - a[1]);
+}
+
 export default function InsightsDashboard() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
+
+  // Date range filter state
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
 
   const load = useCallback(async () => {
     setRefreshing(true);
@@ -176,6 +220,36 @@ export default function InsightsDashboard() {
   const desktopCount = devices["Desktop"] || 0;
   const mobilePct = totalDevices > 0 ? Math.round((mobileCount / totalDevices) * 100) : 0;
   const desktopPct = totalDevices > 0 ? 100 - mobilePct : 0;
+
+  // ── Visitor Insights (from onboarding) ──────────────────────────────────
+  const vi = data.visitorInsights || null;
+  const allSubmissions = vi ? (vi.submissions || []) : [];
+
+  // Filter submissions by date range
+  const filteredSubmissions = allSubmissions.filter((sub) => {
+    if (!sub.ts) return true;
+    const ts = new Date(sub.ts);
+    if (startDate) {
+      const start = new Date(startDate);
+      start.setHours(0, 0, 0, 0);
+      if (ts < start) return false;
+    }
+    if (endDate) {
+      const end = new Date(endDate);
+      end.setHours(23, 59, 59, 999);
+      if (ts > end) return false;
+    }
+    return true;
+  });
+
+  // Compute filtered aggregates
+  const viIntents = aggregate(filteredSubmissions, "intent");
+  const viCollections = aggregate(filteredSubmissions, "collection");
+  const viRoles = aggregate(filteredSubmissions, "role");
+  const viAges = aggregate(filteredSubmissions, "ageRange");
+  const viCountries = aggregate(filteredSubmissions, "country");
+
+  const isFiltered = startDate || endDate;
 
   return (
     <div className="space-y-6">
@@ -391,6 +465,153 @@ export default function InsightsDashboard() {
           </div>
         )}
       </MetricCard>
+
+      {/* ══════════════════════════════════════════════════════════════════ */}
+      {/* VISITOR INSIGHTS (from onboarding modal)                         */}
+      {/* ══════════════════════════════════════════════════════════════════ */}
+      {vi && vi.totalOnboarded > 0 && (
+        <>
+          <div className="pt-6 border-t border-[#E8E0D6] mt-2">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div>
+                <h2 className="text-lg font-bold text-[#1A1A1A]">Visitor Insights</h2>
+                <p className="text-sm text-[#9C9588] mt-0.5">
+                  {isFiltered ? (
+                    <>Menampilkan <span className="font-semibold text-[#1A1A1A]">{filteredSubmissions.length}</span> dari {vi.totalOnboarded} pengunjung</>
+                  ) : (
+                    <>Data dari <span className="font-semibold text-[#1A1A1A]">{vi.totalOnboarded.toLocaleString()}</span> pengunjung yang mengisi onboarding</>
+                  )}
+                </p>
+              </div>
+
+              {/* Date filter */}
+              <div className="flex items-center gap-2 flex-wrap">
+                <label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium">From</label>
+                <input
+                  type="date"
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
+                  className="px-2 py-1.5 text-xs border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A] transition-colors"
+                />
+                <label className="text-[10px] uppercase tracking-[0.2em] text-[#9C9588] font-medium">To</label>
+                <input
+                  type="date"
+                  value={endDate}
+                  onChange={(e) => setEndDate(e.target.value)}
+                  className="px-2 py-1.5 text-xs border border-[#E8E0D6] rounded-sm bg-[#FAFAF8] focus:outline-none focus:border-[#6B1C2A] transition-colors"
+                />
+                {isFiltered && (
+                  <button
+                    onClick={() => { setStartDate(""); setEndDate(""); }}
+                    className="text-[10px] uppercase tracking-[0.1em] text-[#6B1C2A] font-semibold hover:underline ml-1"
+                  >
+                    Reset
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Summary strip */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {[
+              { label: "Total Onboarded", value: filteredSubmissions.length, icon: "👤" },
+              { label: "Top Intent", value: viIntents[0]?.[0] || "—", icon: "🎯", isText: true },
+              { label: "Top Collection", value: viCollections[0]?.[0] || "—", icon: "🖼", isText: true },
+              { label: "Top Country", value: viCountries[0]?.[0] || "—", icon: "🌍", isText: true },
+            ].map(({ label, value, icon, isText }) => (
+              <div key={label} className="bg-white border border-[#E8E0D6] rounded-sm p-4 flex items-center gap-3">
+                <span className="text-xl">{icon}</span>
+                <div className="min-w-0">
+                  <p className={`font-bold text-[#1A1A1A] ${isText ? "text-xs truncate" : "text-lg"}`}>
+                    {isText ? value : value.toLocaleString()}
+                  </p>
+                  <p className="text-[10px] text-[#9C9588] leading-tight">{label}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Insight cards grid — with bar charts */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+            {/* Visitor Intent */}
+            <MetricCard icon="🎯" title="Visitor Intent" subtitle="Alasan pengunjung datang ke gallery" accent="#6B1C2A">
+              {viIntents.length === 0 ? (
+                <p className="text-xs text-[#9C9588]/60 italic">Belum ada data.</p>
+              ) : (
+                <BarChart entries={viIntents} color="#6B1C2A" />
+              )}
+            </MetricCard>
+
+            {/* Collection Preference */}
+            <MetricCard icon="🖼" title="Collection Preference" subtitle="Koleksi yang paling diminati pengunjung" accent="#B8976A">
+              {viCollections.length === 0 ? (
+                <p className="text-xs text-[#9C9588]/60 italic">Belum ada data.</p>
+              ) : (
+                <BarChart entries={viCollections} color="#B8976A" />
+              )}
+            </MetricCard>
+
+            {/* Visitor Roles */}
+            <MetricCard icon="👤" title="Visitor Roles" subtitle="Profil pengunjung gallery" accent="#1A3A6B">
+              {viRoles.length === 0 ? (
+                <p className="text-xs text-[#9C9588]/60 italic">Belum ada data.</p>
+              ) : (
+                <BarChart entries={viRoles} color="#1A3A6B" maxItems={8} />
+              )}
+            </MetricCard>
+
+            {/* Age Demographics */}
+            <MetricCard icon="📊" title="Age Demographics" subtitle="Rentang usia pengunjung gallery" accent="#5B3A8E">
+              {viAges.length === 0 ? (
+                <p className="text-xs text-[#9C9588]/60 italic">Belum ada data.</p>
+              ) : (
+                <BarChart entries={viAges} color="#5B3A8E" />
+              )}
+            </MetricCard>
+
+            {/* Countries (from onboarding) */}
+            <MetricCard icon="🌍" title="Visitor Countries" subtitle="Negara asal pengunjung (dari onboarding)" accent="#7C3D0A">
+              {viCountries.length === 0 ? (
+                <p className="text-xs text-[#9C9588]/60 italic">Belum ada data.</p>
+              ) : (
+                <BarChart entries={viCountries} color="#7C3D0A" maxItems={8} />
+              )}
+            </MetricCard>
+
+            {/* Recent Submissions */}
+            <MetricCard icon="📝" title="Recent Submissions" subtitle="Pengunjung terakhir yang mengisi onboarding" accent="#0D6B4E">
+              {filteredSubmissions.length === 0 ? (
+                <p className="text-xs text-[#9C9588]/60 italic">Belum ada data.</p>
+              ) : (
+                <div className="space-y-3">
+                  {filteredSubmissions.slice(0, 10).map((sub, i) => (
+                    <div key={i} className="flex items-start gap-3 py-2 border-b border-[#F0EBE3] last:border-0">
+                      <span className="w-5 text-[10px] text-[#9C9588] font-bold shrink-0">{i + 1}</span>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-wrap gap-1.5">
+                          {sub.intent && <span className="text-[10px] px-1.5 py-0.5 bg-[#6B1C2A]/8 text-[#6B1C2A] rounded-sm font-medium">{sub.intent}</span>}
+                          {sub.role && <span className="text-[10px] px-1.5 py-0.5 bg-[#1A3A6B]/8 text-[#1A3A6B] rounded-sm font-medium">{sub.role}</span>}
+                          {sub.collection && <span className="text-[10px] px-1.5 py-0.5 bg-[#B8976A]/15 text-[#7C3D0A] rounded-sm font-medium">{sub.collection}</span>}
+                        </div>
+                        <p className="text-[10px] text-[#9C9588] mt-1">
+                          {[sub.city, sub.country].filter(Boolean).join(", ") || "—"}
+                          {sub.ageRange && ` · ${sub.ageRange}`}
+                        </p>
+                      </div>
+                      <span className="text-[9px] text-[#9C9588]/50 shrink-0">
+                        {sub.ts ? new Date(sub.ts).toLocaleDateString() : ""}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </MetricCard>
+
+          </div>
+        </>
+      )}
 
       <p className="text-[10px] text-[#9C9588]/50 text-center pb-6">
         Data disimpan di <code className="bg-[#F5F0EB] px-1 py-0.5 rounded text-[9px]">data/analytics.json</code> ·
