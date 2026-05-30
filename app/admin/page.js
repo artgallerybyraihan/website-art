@@ -72,6 +72,7 @@ export default function AdminPage() {
   const [password, setPassword] = useState("");
   const [pwError, setPwError]   = useState("");
   const [adminTab, setAdminTab] = useState("upload"); // "upload" | "manage" | "insights"
+  const [checkingPassword, setCheckingPassword] = useState(false);
 
   // artwork form
   const [files, setFiles]     = useState([]);
@@ -112,11 +113,33 @@ export default function AdminPage() {
             <h1 className="text-2xl font-bold text-[#1A1A1A]">Admin Panel</h1>
             <p className="text-xs text-[#9C9588] mt-2">Upload dan kelola karya seni</p>
           </div>
-          <form onSubmit={e => { e.preventDefault(); if (password.length >= 4) { setAuthed(true); setPwError(""); } else setPwError("Password tidak valid."); }} className="space-y-4">
+          <form onSubmit={async e => {
+            e.preventDefault();
+            if (password.length < 4) {
+              setPwError("Password minimal 4 karakter.");
+              return;
+            }
+            setCheckingPassword(true);
+            setPwError("");
+            try {
+              const res = await fetch(`/api/admin/artworks?password=${encodeURIComponent(password)}`);
+              if (res.ok) {
+                setAuthed(true);
+              } else {
+                setPwError("Password admin salah.");
+              }
+            } catch (err) {
+              setPwError("Gagal menghubungkan ke server.");
+            } finally {
+              setCheckingPassword(false);
+            }
+          }} className="space-y-4">
             <Input label="Password" value={password} onChange={setPassword} placeholder="Masukkan password" type="password" />
             {pwError && <p className="text-xs text-red-500">{pwError}</p>}
-            <button type="submit" className="w-full py-3.5 bg-[#1A1A1A] text-white text-xs font-bold tracking-[0.2em] uppercase rounded-sm hover:bg-[#6B1C2A] transition-colors">
-              Masuk
+            <button type="submit" disabled={checkingPassword} className="w-full py-3.5 bg-[#1A1A1A] text-white text-xs font-bold tracking-[0.2em] uppercase rounded-sm hover:bg-[#6B1C2A] transition-colors disabled:opacity-50 flex items-center justify-center gap-2">
+              {checkingPassword ? (
+                <><svg className="w-4 h-4 animate-spin text-white" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>Memverifikasi...</>
+              ) : "Masuk"}
             </button>
           </form>
           <p className="text-[10px] text-[#9C9588]/50 text-center mt-8">Hanya pemilik yang bisa mengakses halaman ini</p>

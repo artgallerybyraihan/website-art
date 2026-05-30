@@ -7,7 +7,7 @@ SizeW: 100
 SizeH: 200
 SizeD: 4
 Year: 2026
-Status: available
+Status: collected
 Frame: Not Framed
 ReadyToHang: No
 Authenticity: Certificate is Included
